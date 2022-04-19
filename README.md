@@ -35,5 +35,5 @@ Upon first time launching the program, it will generate a **config_rewards.ini**
 
 ## Credits and Thanks
  - WaterKH - [Re:Write](https://github.com/WaterKH/ReWrite) inspiration
-  - KSX387 - For many addresses he found -
+  - KSX387 - For many addresses he found
   - TopazTK - For telling me to not store 1000+ lines of code in a single file. :)
