@@ -1,0 +1,5 @@
+﻿- Unendlich Drive für x Sekunden
+- Form freischalten
+- Magie upgrades/downgrades
+- Party-Member entfernen (permanent)
+- Party-Member wiederherstellen (permanent)

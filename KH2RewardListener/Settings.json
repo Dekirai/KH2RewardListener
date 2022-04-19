@@ -1,0 +1,16 @@
+{
+  "twitch":{
+
+    "channelName":"STREAMER_NAME",
+    "api":{
+      "client-id":"APPLICATION_CLIENT_ID",
+	  "secret":"APPLICATION_CLIENT_SECRET",
+	  "bot-name":"BOT_ACCOUNT_NAME",
+	  "bot-oauth":"BOT_ACCOUNT_OAUTH"
+    },
+
+    "pubsub":{
+      "oauth":"STREAMER_OAUTH"
+    }
+  }
+}
