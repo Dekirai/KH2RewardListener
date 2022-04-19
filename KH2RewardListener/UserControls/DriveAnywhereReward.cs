@@ -117,7 +117,7 @@ namespace KH2RewardListener.UserControls
             MainForm.kh2.WriteByte(0x3F059E, 0x74);
             MainForm.kh2.WriteByte(0x3FF735, 0x85);
             MainForm.kh2.WriteByte(0x3E107C, 0x78);
-            MainForm.client.SendMessage(MainForm.channel, $"'{RewardName}' wurde beendet.");
+            MainForm.client.SendMessage(MainForm.channel, $"'{RewardName}' has ended.");
         }
     }
 }

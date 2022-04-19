@@ -114,7 +114,7 @@ namespace KH2RewardListener.UserControls
             await Task.Delay((int)Duration);
             MainForm.mem.UnfreezeValue($"KINGDOM HEARTS II FINAL MIX.exe+2A5A0C6");
             MainForm.kh2.WriteByte(0x2A5A0F6, 0x01);
-            MainForm.client.SendMessage(MainForm.channel, $"'{RewardName}' wurde beendet.");
+            MainForm.client.SendMessage(MainForm.channel, $"'{RewardName}' has ended.");
         }
     }
 }
