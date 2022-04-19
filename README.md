@@ -1,4 +1,5 @@
 
+
 # KH2RewardListener
 
 Viewers can interact with your KH2 session by using Channel Points on Twitch!
@@ -27,3 +28,12 @@ Upon first time launching the program, it will generate a **config_rewards.ini**
 [KH2MemLibrary](https://github.com/Dekirai/KHMemLibrary) by Dekirai  
 [Memory.dll](https://github.com/erfg12/memory.dll) by erfg12  
 [MadMilkman.ini](https://github.com/MarioZ/MadMilkman.Ini) by MarioZ  
+
+## Preview
+
+![Image1](https://i.imgur.com/YwHbhPO.png)![Image2](https://i.imgur.com/gemrJC4.png) ![Image3](https://i.imgur.com/ffUnPgZ.png) ![Image4](https://i.imgur.com/45R5hFP.png)
+
+## Credits and Thanks
+ - WaterKH - [Re:Write](https://github.com/WaterKH/ReWrite) inspiration
+  - KSX387 - For many addresses he found -
+  - TopazTK - For telling me to not store 1000+ lines of code in a single file. :)
