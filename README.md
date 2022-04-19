@@ -34,6 +34,6 @@ Upon first time launching the program, it will generate a **config_rewards.ini**
 ![Image1](https://i.imgur.com/YwHbhPO.png)![Image2](https://i.imgur.com/gemrJC4.png) ![Image3](https://i.imgur.com/ffUnPgZ.png) ![Image4](https://i.imgur.com/45R5hFP.png)
 
 ## Credits and Thanks
- - WaterKH - [Re:Write](https://github.com/WaterKH/ReWrite) inspiration
+ - WaterKH - For the [Re:Write](https://github.com/WaterKH/ReWrite) inspiration and trying to help me
   - KSX387 - For many addresses he found
   - TopazTK - For telling me to not store 1000+ lines of code in a single file. :)
