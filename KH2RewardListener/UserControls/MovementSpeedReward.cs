@@ -110,10 +110,13 @@ namespace KH2RewardListener.UserControls
 
         private async void MovementSpeed()
         {
-            MainForm.mem.FreezeValue($"KINGDOM HEARTS II FINAL MIX.exe+2A71AD4", "float", "60");
+            MainForm.mem.FreezeValue($"KINGDOM HEARTS II FINAL MIX.exe+00716A60,0x128", "float", "60");
+            MainForm.mem.FreezeValue($"KINGDOM HEARTS II FINAL MIX.exe+00716A60,0x12C", "float", "60");
             await Task.Delay((int)Duration);
-            MainForm.mem.UnfreezeValue($"KINGDOM HEARTS II FINAL MIX.exe+2A71AD4");
-            MainForm.mem.WriteMemory($"KINGDOM HEARTS II FINAL MIX.exe+2A71AD4", "float", "8");
+            MainForm.mem.UnfreezeValue($"KINGDOM HEARTS II FINAL MIX.exe+00716A60,0x128");
+            MainForm.mem.UnfreezeValue($"KINGDOM HEARTS II FINAL MIX.exe+00716A60,0x12C");
+            MainForm.mem.WriteMemory($"KINGDOM HEARTS II FINAL MIX.exe+00716A60,0x128", "float", "2");
+            MainForm.mem.WriteMemory($"KINGDOM HEARTS II FINAL MIX.exe+00716A60,0x12C", "float", "8");
             MainForm.client.SendMessage(MainForm.channel, $"'{RewardName}' has ended.");
         }
     }
