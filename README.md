@@ -18,6 +18,8 @@ You got the full control of the settings of the rewards. You can name them yours
  - access_token of your streamer and bot account-> [Generate on here](https://twitchtokengenerator.com/quick/1rBjCovsN6)
 
 ## Information
+You can read a full reward breakdown in the [Wiki](https://github.com/Dekirai/KH2RewardListener/wiki/Rewards).    
+There you can see what exactly each reward does in your game!  
 
 Your application's client-id and secret will be needed for the settings.json file, same goes for the access_token. The access token must be replaced with the oauth datas.    
 
