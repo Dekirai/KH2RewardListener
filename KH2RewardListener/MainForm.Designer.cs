@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ll_devconsole = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.ll_accesstoken = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.gb_Authenticate = new System.Windows.Forms.GroupBox();
@@ -38,8 +40,6 @@
             this.rtb_Log = new System.Windows.Forms.RichTextBox();
             this.tp_modules = new System.Windows.Forms.TabPage();
             this.lb_modules = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ll_devconsole = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gb_Authenticate.SuspendLayout();
@@ -71,6 +71,26 @@
             this.tabPage1.Size = new System.Drawing.Size(692, 311);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Authentication";
+            // 
+            // ll_devconsole
+            // 
+            this.ll_devconsole.AutoSize = true;
+            this.ll_devconsole.Location = new System.Drawing.Point(537, 28);
+            this.ll_devconsole.Name = "ll_devconsole";
+            this.ll_devconsole.Size = new System.Drawing.Size(73, 13);
+            this.ll_devconsole.TabIndex = 7;
+            this.ll_devconsole.TabStop = true;
+            this.ll_devconsole.Text = "Dev Console";
+            this.ll_devconsole.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_devconsole_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(365, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Create your Client App here:";
             // 
             // ll_accesstoken
             // 
@@ -135,10 +155,10 @@
             // 
             this.tp_modules.BackColor = System.Drawing.SystemColors.Control;
             this.tp_modules.Controls.Add(this.lb_modules);
-            this.tp_modules.Location = new System.Drawing.Point(4, 24);
+            this.tp_modules.Location = new System.Drawing.Point(4, 22);
             this.tp_modules.Name = "tp_modules";
             this.tp_modules.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_modules.Size = new System.Drawing.Size(692, 309);
+            this.tp_modules.Size = new System.Drawing.Size(692, 311);
             this.tp_modules.TabIndex = 1;
             this.tp_modules.Text = "Rewards";
             // 
@@ -163,6 +183,12 @@
             "End Drive",
             "Flashbang",
             "FoV",
+            "Force Anti",
+            "Force Final",
+            "Force Limit",
+            "Force Master",
+            "Force Wisdom",
+            "Force Valor",
             "Game Speed",
             "Invisible Models",
             "Magic 0",
@@ -186,26 +212,6 @@
             this.lb_modules.Size = new System.Drawing.Size(146, 303);
             this.lb_modules.TabIndex = 2;
             this.lb_modules.SelectedIndexChanged += new System.EventHandler(this.lb_modules_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(365, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Create your Client App here:";
-            // 
-            // ll_devconsole
-            // 
-            this.ll_devconsole.AutoSize = true;
-            this.ll_devconsole.Location = new System.Drawing.Point(537, 28);
-            this.ll_devconsole.Name = "ll_devconsole";
-            this.ll_devconsole.Size = new System.Drawing.Size(73, 13);
-            this.ll_devconsole.TabIndex = 7;
-            this.ll_devconsole.TabStop = true;
-            this.ll_devconsole.Text = "Dev Console";
-            this.ll_devconsole.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_devconsole_LinkClicked);
             // 
             // MainForm
             // 

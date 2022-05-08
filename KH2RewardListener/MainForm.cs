@@ -36,7 +36,13 @@ namespace KH2RewardListener
         BlockPauseReward blockpause = new BlockPauseReward();
         Defense0Reward defense0 = new Defense0Reward();
         Defense255Reward defense255 = new Defense255Reward();
+        DriveAntiReward driveanti = new DriveAntiReward();
         DriveAnywhereReward driveanywhere = new DriveAnywhereReward();
+        DriveFinalReward drivefinal = new DriveFinalReward();
+        DriveLimitReward drivelimit = new DriveLimitReward();
+        DriveMasterReward drivemaster = new DriveMasterReward();
+        DriveValorReward drivevalor = new DriveValorReward();
+        DriveWisdomReward drivewisdom = new DriveWisdomReward();
         EmptyDriveReward emptydrive = new EmptyDriveReward();
         EmptyMagicReward emptymagic = new EmptyMagicReward();
         EndDriveReward enddrive = new EndDriveReward();
@@ -198,6 +204,18 @@ namespace KH2RewardListener
                     driveanywhere.DoAction();
                 else if (e.RewardTitle == refillformduration.RewardName)
                     refillformduration.DoAction();
+                else if (e.RewardTitle == drivefinal.RewardName)
+                    drivefinal.DoAction();
+                else if (e.RewardTitle == drivelimit.RewardName)
+                    drivelimit.DoAction();
+                else if (e.RewardTitle == drivemaster.RewardName)
+                    drivemaster.DoAction();
+                else if (e.RewardTitle == drivewisdom.RewardName)
+                    drivewisdom.DoAction();
+                else if (e.RewardTitle == drivevalor.RewardName)
+                    drivevalor.DoAction();
+                else if (e.RewardTitle == driveanti.RewardName)
+                    driveanti.DoAction();
                 else
                 {
                     //Do nothing
@@ -427,6 +445,36 @@ namespace KH2RewardListener
                 DisposeAllUserControls();
                 SetUserControlPosition(refillformduration);
             }
+            else if (module == "Force Final")
+            {
+                DisposeAllUserControls();
+                SetUserControlPosition(drivefinal);
+            }
+            else if (module == "Force Limit")
+            {
+                DisposeAllUserControls();
+                SetUserControlPosition(drivelimit);
+            }
+            else if (module == "Force Master")
+            {
+                DisposeAllUserControls();
+                SetUserControlPosition(drivemaster);
+            }
+            else if (module == "Force Wisdom")
+            {
+                DisposeAllUserControls();
+                SetUserControlPosition(drivewisdom);
+            }
+            else if (module == "Force Valor")
+            {
+                DisposeAllUserControls();
+                SetUserControlPosition(drivevalor);
+            }
+            else if (module == "Force Anti")
+            {
+                DisposeAllUserControls();
+                SetUserControlPosition(driveanti);
+            }
         }
 
         private void GetPID()
@@ -439,7 +487,7 @@ namespace KH2RewardListener
 
         private void DisposeAllUserControls()
         {
-            UserControl[] userControlArray = new UserControl[35]
+            UserControl[] userControlArray = new UserControl[41]
             {
                 attack0,
                 attack255,
@@ -450,7 +498,13 @@ namespace KH2RewardListener
                 blockpause,
                 defense0,
                 defense255,
+                driveanti,
                 driveanywhere,
+                drivefinal,
+                drivelimit,
+                drivemaster,
+                drivewisdom,
+                drivevalor,
                 emptydrive,
                 emptymagic,
                 enddrive,

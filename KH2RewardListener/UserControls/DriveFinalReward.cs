@@ -2,9 +2,9 @@
 
 namespace KH2RewardListener.UserControls
 {
-    public partial class EndDriveReward : UserControl
+    public partial class DriveFinalReward : UserControl
     {
-        public EndDriveReward()
+        public DriveFinalReward()
         {
             InitializeComponent();
             CheckSettingsFile();
@@ -25,13 +25,13 @@ namespace KH2RewardListener.UserControls
             ini.Load(Environment.CurrentDirectory + @"\config_rewards.ini");
             try
             {
-                RewardName = ini.Sections["EndDrive"].Keys["RewardName"].Value;
-                ChatMessage = ini.Sections["EndDrive"].Keys["ChatMessage"].Value;
+                RewardName = ini.Sections["DriveFinal"].Keys["RewardName"].Value;
+                ChatMessage = ini.Sections["DriveFinal"].Keys["ChatMessage"].Value;
             }
             catch
             {
-                RewardName = "End Drive";
-                ChatMessage = "The current drive form got cancelled.";
+                RewardName = "Force Final";
+                ChatMessage = "Sora got forced into the Final Form.";
             }
         }
 
@@ -68,24 +68,32 @@ namespace KH2RewardListener.UserControls
             }
             var ini = new IniFile();
             ini.Load(Environment.CurrentDirectory + @"\config_rewards.ini");
-            if (!ini.Sections.Contains("EndDrive"))
+            if (!ini.Sections.Contains("DriveFinal"))
             {
-                var section = ini.Sections.Add("EndDrive");
+                var section = ini.Sections.Add("DriveFinal");
                 var reward = section.Keys.Add("RewardName", $"{RewardName}");
                 var message = section.Keys.Add("ChatMessage", $"{ChatMessage}");
             }
             else
             {
-                ini.Sections["EndDrive"].Keys["RewardName"].Value = RewardName;
-                ini.Sections["EndDrive"].Keys["ChatMessage"].Value = ChatMessage;
+                ini.Sections["DriveFinal"].Keys["RewardName"].Value = RewardName;
+                ini.Sections["DriveFinal"].Keys["ChatMessage"].Value = ChatMessage;
             }
             ini.Save("config_rewards.ini");
         }
 
         public void DoAction()
         {
+            bool hasKeyblade = false;
+            var keyblade = MainForm.kh2.ReadByte(0x9AA484);
+            if (keyblade == 0)
+                MainForm.kh2.Write2Bytes(0x9AA484, 0x29, 0x00);
+            else
+                hasKeyblade = true;
             MainForm.client.SendMessage(MainForm.channel, ChatMessage);
-            MainForm.mem.WriteMemory("KINGDOM HEARTS II FINAL MIX.exe+2A5A096", "bytes", "0x05 0x00 0x01 0x00");
+            MainForm.mem.WriteMemory("KINGDOM HEARTS II FINAL MIX.exe+2A5A096", "bytes", "0x05 0x00 0x01 0x00"); //Revert incase we are in a form already
+            Thread.Sleep(400);
+            MainForm.mem.WriteMemory("KINGDOM HEARTS II FINAL MIX.exe+2A5A096", "bytes", "0x04 0x00 0x05 0x00");
             Thread.Sleep(400);
             MainForm.mem.WriteMemory("KINGDOM HEARTS II FINAL MIX.exe+2A5A096", "bytes", "0x00 0x00 0x00 0x00");
         }

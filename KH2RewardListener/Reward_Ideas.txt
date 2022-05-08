@@ -1,5 +1,12 @@
-﻿- Unendlich Drive für x Sekunden
-- Form freischalten
-- Magie upgrades/downgrades
-- Party-Member entfernen (permanent)
-- Party-Member wiederherstellen (permanent)
+﻿• Unendlich Drive für x Sekunden
+• Form freischalten
+• Magie upgrades/downgrades
+• Party-Member entfernen (permanent)
+• Party-Member wiederherstellen (permanent)
+• Win scripted event
+• Sora Size Modifier
+• Add Experience (Random amount?)
+• Add/Remove Abilities
+• Equip random Accessoire
+• Equip random Armor
+• Add/Remove Form
