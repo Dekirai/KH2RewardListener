@@ -86,6 +86,12 @@ namespace KH2RewardListener.UserControls
         {
             bool hasKeyblade = false;
             var keyblade = MainForm.kh2.ReadByte(0x9AA44C);
+            var CharCheck = MainForm.kh2.ReadByte(0x2A22A00);
+            if (CharCheck != 0x54)
+            {
+                MainForm.client.SendMessage(MainForm.channel, "This can't be used right now!");
+                return;
+            }
             if (keyblade == 0)
                 MainForm.kh2.Write2Bytes(0x9AA44C, 0x29, 0x00);
             else

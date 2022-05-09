@@ -31,7 +31,7 @@ namespace KH2RewardListener.UserControls
             }
             catch
             {
-                RewardName = "FOV";
+                RewardName = "Field of View";
                 ChatMessage = "The field of view got increased for [Duration] seconds.";
                 Duration = 10000;
             }

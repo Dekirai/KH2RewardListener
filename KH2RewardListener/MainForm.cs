@@ -13,7 +13,6 @@ using KHMemLibrary;
 using Memory;
 using KH2RewardListener.UserControls;
 using KH2RewardListener.Properties;
-using KH2RewardListener.Memory;
 
 namespace KH2RewardListener
 {

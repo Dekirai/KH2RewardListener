@@ -33,7 +33,7 @@ namespace KH2RewardListener.UserControls
             catch
             {
                 RewardName = "Random Keyblade";
-                ChatMessage = "Sora received [Item].";
+                ChatMessage = "Sora's current Keyblade got replaced by [Item].";
             }
         }
 

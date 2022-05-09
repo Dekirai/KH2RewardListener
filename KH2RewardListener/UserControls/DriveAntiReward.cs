@@ -84,6 +84,12 @@ namespace KH2RewardListener.UserControls
 
         public void DoAction()
         {
+            var CharCheck = MainForm.kh2.ReadByte(0x2A22A00);
+            if (CharCheck != 0x54)
+            {
+                MainForm.client.SendMessage(MainForm.channel, "This can't be used right now!");
+                return;
+            }
             MainForm.client.SendMessage(MainForm.channel, ChatMessage);
             MainForm.mem.WriteMemory("KINGDOM HEARTS II FINAL MIX.exe+2A5A096", "bytes", "0x05 0x00 0x01 0x00"); //Revert incase we are in a form already
             Thread.Sleep(400);

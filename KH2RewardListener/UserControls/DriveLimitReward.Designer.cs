@@ -34,6 +34,7 @@
             this.tb_chatmessage = new System.Windows.Forms.TextBox();
             this.tb_rewardname = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gb_RewardName.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,10 +94,20 @@
             this.label79.TabIndex = 10;
             this.label79.Text = "Chat message:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 121);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(371, 14);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "This can\'t be triggered if you are playing as Roxas!";
+            // 
             // DriveLimitReward
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.gb_RewardName);
             this.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "DriveLimitReward";
@@ -104,6 +115,7 @@
             this.gb_RewardName.ResumeLayout(false);
             this.gb_RewardName.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -115,5 +127,6 @@
         private TextBox tb_chatmessage;
         private TextBox tb_rewardname;
         private Label label79;
+        private Label label1;
     }
 }
