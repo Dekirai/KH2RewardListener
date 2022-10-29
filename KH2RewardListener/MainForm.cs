@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using TwitchLib.Api;
 using TwitchLib.Api.Interfaces;
 using TwitchLib.Client;
@@ -7,7 +6,6 @@ using TwitchLib.Client.Models;
 using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
 using System.Diagnostics;
-using TwitchLib.Api.Helix.Models.Users.GetUsers;
 using KH2RewardListener.Logger;
 using KHMemLibrary;
 using Memory;
@@ -18,13 +16,12 @@ namespace KH2RewardListener
 {
     public partial class MainForm : Form
     {
-        public static IConfiguration SettingsFile;
         public static TwitchPubSub PubSub;
         public static KH2FM kh2 = new KH2FM();
         public static Mem mem = new Mem();
         public static TwitchClient client = new TwitchClient();
-        public static string channel = "";
         public static ITwitchAPI API;
+        public static string channel = "";
 
         Attack0Reward attack0 = new Attack0Reward();
         Attack255Reward attack255 = new Attack255Reward();
@@ -73,32 +70,31 @@ namespace KH2RewardListener
             InitializeComponent();
             _logger = LogService.Instance;
             _logger.OnLogReceived += new EventHandler<LogEventArgs>(OnLogReceived);
-
-            SettingsFile = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("Settings.json", false, true)
-                .AddEnvironmentVariables()
-                .Build();
             tb_broadcaster.Text = Settings.Default.channel;
+            tb_streameraccesstoken.Text = Settings.Default.access_token;
+            tb_streameraccountid.Text = Settings.Default.channel_id;
+            tb_streamerrefreshtoken.Text = Settings.Default.refresh_token;
+            tb_appclientid.Text = Settings.Default.client_id;
+            tb_appclientsecret.Text = Settings.Default.client_secret;
         }
 
         private async void bt_connect_Click(object sender, EventArgs e)
         {
-            var bot_name = SettingsFile.GetSection("twitch:api").GetValue<string>("bot-name");
-            var bot_oauth = SettingsFile.GetSection("twitch:api").GetValue<string>("bot-oauth");
-            bt_connect.Enabled = false;
-            ConnectionCredentials creds = new ConnectionCredentials(bot_name, bot_oauth);
-            API = new TwitchAPI();
-            API.Settings.ClientId = SettingsFile.GetSection("twitch:api").GetValue<string>("client-id");
-            API.Settings.Secret = SettingsFile.GetSection("twitch:api").GetValue<string>("secret");
+            if (tb_streameraccesstoken.Text.Length < 1 || tb_appclientid.Text.Length < 1 || tb_appclientsecret.Text.Length < 1)
+            {
+                MessageBox.Show("Please head over to Settings and fill everything out first.");
+                return;
+            }
+            var API = new TwitchAPI();
             channel = tb_broadcaster.Text;
+            bt_connect.Enabled = false;
+            ConnectionCredentials creds = new ConnectionCredentials(tb_broadcaster.Text, tb_streameraccesstoken.Text);
+            API.Settings.ClientId = tb_appclientid.Text;
+            API.Settings.Secret = tb_appclientsecret.Text;
 
-            client.Initialize(creds, channel);
+            client.Initialize(creds, tb_broadcaster.Text);
             client.OnConnected += Client_OnConnected;
             client.Connect();
-
-            User usersResult = (await API.Helix.Users.GetUsersAsync(logins: new List<string> { tb_broadcaster.Text })).Users[0];
-            var channelid = usersResult.Id;
 
             PubSub = new TwitchPubSub();
             PubSub.OnListenResponse += OnListenResponse;
@@ -106,7 +102,7 @@ namespace KH2RewardListener
             PubSub.OnPubSubServiceClosed += OnPubSubServiceClosed;
             PubSub.OnPubSubServiceError += OnPubSubServiceError;
 
-            ListenToRewards(channelid);
+            ListenToRewards(tb_streameraccountid.Text);
 
             PubSub.Connect();
         }
@@ -240,8 +236,7 @@ namespace KH2RewardListener
 
         private void OnPubSubServiceConnected(object sender, EventArgs e)
         {
-            var oauth = SettingsFile.GetSection("twitch:pubsub").GetValue<string>("oauth");
-            PubSub.SendTopics(oauth);
+            PubSub.SendTopics(tb_streameraccesstoken.Text);
             _logger.Information("Successfully connected to PubSub Server.");
         }
 
@@ -249,7 +244,7 @@ namespace KH2RewardListener
         {
             if (!e.Successful)
             {
-                _logger.Error("Failed to listen to Rewards");
+                _logger.Error($"Failed to listen to Rewards\n{e.Response.Error}");
             }
         }
 
@@ -546,18 +541,38 @@ namespace KH2RewardListener
             control.Size = new Size(528, 300);
             tp_modules.Controls.Add(control);
         }
-        private void ll_accesstoken_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void ll_accesstoken_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            var api = new TwitchAPI();
+            var server = new WebServer("http://localhost:8080/redirect/");
+
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://twitchtokengenerator.com/quick/1rBjCovsN6",
+                FileName = $"{getAuthorizationCodeUrl(tb_appclientid.Text, "http://localhost:8080/redirect/")}",
                 UseShellExecute = true
             });
+
+            var auth = await server.Listen();
+            var resp = await api.Auth.GetAccessTokenFromCodeAsync(auth.Code, tb_appclientsecret.Text, "http://localhost:8080/redirect/", tb_appclientid.Text);
+
+            api.Settings.AccessToken = resp.AccessToken;
+            api.Settings.ClientId = tb_appclientid.Text;
+            var user = (await api.Helix.Users.GetUsersAsync()).Users[0];
+            MessageBox.Show($"Authorization success!\n\nUser: {user.DisplayName} (id: {user.Id})\nAccess token: {resp.AccessToken}\nRefresh token: {resp.RefreshToken}\nExpires in: {resp.ExpiresIn}\nScopes: {string.Join(", ", resp.Scopes)}\n\nInfo has been stored to the settings.\nYou may start the bot now.");
+            tb_streameraccesstoken.Text = resp.AccessToken;
+            tb_streamerrefreshtoken.Text = resp.RefreshToken;
+            tb_streameraccountid.Text = user.Id;
+            Settings.Default.Save();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Settings.Default.channel = tb_broadcaster.Text;
+            Settings.Default.access_token = tb_streameraccesstoken.Text;
+            Settings.Default.refresh_token = tb_streamerrefreshtoken.Text;
+            Settings.Default.channel_id = tb_streameraccountid.Text;
+            Settings.Default.client_id = tb_appclientid.Text;
+            Settings.Default.client_secret = tb_appclientsecret.Text;
             Settings.Default.Save();
         }
 
@@ -568,6 +583,15 @@ namespace KH2RewardListener
                 FileName = "https://dev.twitch.tv/console",
                 UseShellExecute = true
             });
+        }
+
+        private static string getAuthorizationCodeUrl(string clientId, string redirectUri)
+        {
+            return "https://id.twitch.tv/oauth2/authorize?" +
+                   $"client_id={clientId}&" +
+                   $"redirect_uri={System.Web.HttpUtility.UrlEncode(redirectUri)}&" +
+                   "response_type=code&" +
+                   $"scope=chat:edit+chat:read+channel:manage:redemptions";
         }
     }
 }

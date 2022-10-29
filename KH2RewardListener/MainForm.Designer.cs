@@ -29,88 +29,61 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ll_devconsole = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ll_accesstoken = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.tp_authentication = new System.Windows.Forms.TabPage();
             this.gb_Authenticate = new System.Windows.Forms.GroupBox();
             this.tb_broadcaster = new System.Windows.Forms.TextBox();
             this.bt_connect = new System.Windows.Forms.Button();
             this.rtb_Log = new System.Windows.Forms.RichTextBox();
             this.tp_modules = new System.Windows.Forms.TabPage();
             this.lb_modules = new System.Windows.Forms.ListBox();
+            this.tp_settings = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bt_streamerrefreshtoken = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_streameraccountid = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_streamerrefreshtoken = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ll_accesstoken = new System.Windows.Forms.LinkLabel();
+            this.tb_streameraccesstoken = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tb_appclientsecret = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ll_devconsole = new System.Windows.Forms.LinkLabel();
+            this.tb_appclientid = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tp_authentication.SuspendLayout();
             this.gb_Authenticate.SuspendLayout();
             this.tp_modules.SuspendLayout();
+            this.tp_settings.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tp_authentication);
             this.tabControl1.Controls.Add(this.tp_modules);
+            this.tabControl1.Controls.Add(this.tp_settings);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(700, 337);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tp_authentication
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.ll_devconsole);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.ll_accesstoken);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.gb_Authenticate);
-            this.tabPage1.Controls.Add(this.rtb_Log);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(692, 311);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Authentication";
-            // 
-            // ll_devconsole
-            // 
-            this.ll_devconsole.AutoSize = true;
-            this.ll_devconsole.Location = new System.Drawing.Point(537, 28);
-            this.ll_devconsole.Name = "ll_devconsole";
-            this.ll_devconsole.Size = new System.Drawing.Size(73, 13);
-            this.ll_devconsole.TabIndex = 7;
-            this.ll_devconsole.TabStop = true;
-            this.ll_devconsole.Text = "Dev Console";
-            this.ll_devconsole.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_devconsole_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(365, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Create your Client App here:";
-            // 
-            // ll_accesstoken
-            // 
-            this.ll_accesstoken.AutoSize = true;
-            this.ll_accesstoken.Location = new System.Drawing.Point(537, 44);
-            this.ll_accesstoken.Name = "ll_accesstoken";
-            this.ll_accesstoken.Size = new System.Drawing.Size(127, 13);
-            this.ll_accesstoken.TabIndex = 5;
-            this.ll_accesstoken.TabStop = true;
-            this.ll_accesstoken.Text = "TwitchTokenGenerator";
-            this.ll_accesstoken.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_accesstoken_LinkClicked);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(371, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Get your access token here:";
+            this.tp_authentication.BackColor = System.Drawing.SystemColors.Control;
+            this.tp_authentication.Controls.Add(this.gb_Authenticate);
+            this.tp_authentication.Controls.Add(this.rtb_Log);
+            this.tp_authentication.Location = new System.Drawing.Point(4, 22);
+            this.tp_authentication.Name = "tp_authentication";
+            this.tp_authentication.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_authentication.Size = new System.Drawing.Size(692, 311);
+            this.tp_authentication.TabIndex = 0;
+            this.tp_authentication.Text = "Authentication";
             // 
             // gb_Authenticate
             // 
@@ -213,6 +186,175 @@
             this.lb_modules.TabIndex = 2;
             this.lb_modules.SelectedIndexChanged += new System.EventHandler(this.lb_modules_SelectedIndexChanged);
             // 
+            // tp_settings
+            // 
+            this.tp_settings.BackColor = System.Drawing.SystemColors.Control;
+            this.tp_settings.Controls.Add(this.groupBox2);
+            this.tp_settings.Controls.Add(this.groupBox1);
+            this.tp_settings.Location = new System.Drawing.Point(4, 22);
+            this.tp_settings.Name = "tp_settings";
+            this.tp_settings.Size = new System.Drawing.Size(692, 311);
+            this.tp_settings.TabIndex = 2;
+            this.tp_settings.Text = "Settings";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.bt_streamerrefreshtoken);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.tb_streameraccountid);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.tb_streamerrefreshtoken);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.ll_accesstoken);
+            this.groupBox2.Controls.Add(this.tb_streameraccesstoken);
+            this.groupBox2.Location = new System.Drawing.Point(7, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(260, 175);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Streamer Account";
+            // 
+            // bt_streamerrefreshtoken
+            // 
+            this.bt_streamerrefreshtoken.Enabled = false;
+            this.bt_streamerrefreshtoken.Location = new System.Drawing.Point(6, 142);
+            this.bt_streamerrefreshtoken.Name = "bt_streamerrefreshtoken";
+            this.bt_streamerrefreshtoken.Size = new System.Drawing.Size(248, 23);
+            this.bt_streamerrefreshtoken.TabIndex = 14;
+            this.bt_streamerrefreshtoken.Text = "Refresh Token (Not working yet)";
+            this.bt_streamerrefreshtoken.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Account ID";
+            // 
+            // tb_streameraccountid
+            // 
+            this.tb_streameraccountid.Location = new System.Drawing.Point(6, 116);
+            this.tb_streameraccountid.Name = "tb_streameraccountid";
+            this.tb_streameraccountid.ReadOnly = true;
+            this.tb_streameraccountid.Size = new System.Drawing.Size(173, 20);
+            this.tb_streameraccountid.TabIndex = 12;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Refresh Token";
+            // 
+            // tb_streamerrefreshtoken
+            // 
+            this.tb_streamerrefreshtoken.Location = new System.Drawing.Point(6, 74);
+            this.tb_streamerrefreshtoken.Name = "tb_streamerrefreshtoken";
+            this.tb_streamerrefreshtoken.ReadOnly = true;
+            this.tb_streamerrefreshtoken.Size = new System.Drawing.Size(173, 20);
+            this.tb_streamerrefreshtoken.TabIndex = 10;
+            this.tb_streamerrefreshtoken.UseSystemPasswordChar = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Access Token";
+            // 
+            // ll_accesstoken
+            // 
+            this.ll_accesstoken.AutoSize = true;
+            this.ll_accesstoken.Location = new System.Drawing.Point(199, 16);
+            this.ll_accesstoken.Name = "ll_accesstoken";
+            this.ll_accesstoken.Size = new System.Drawing.Size(55, 13);
+            this.ll_accesstoken.TabIndex = 5;
+            this.ll_accesstoken.TabStop = true;
+            this.ll_accesstoken.Text = "Generate";
+            this.ll_accesstoken.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_accesstoken_LinkClicked);
+            // 
+            // tb_streameraccesstoken
+            // 
+            this.tb_streameraccesstoken.Location = new System.Drawing.Point(6, 32);
+            this.tb_streameraccesstoken.Name = "tb_streameraccesstoken";
+            this.tb_streameraccesstoken.ReadOnly = true;
+            this.tb_streameraccesstoken.Size = new System.Drawing.Size(173, 20);
+            this.tb_streameraccesstoken.TabIndex = 8;
+            this.tb_streameraccesstoken.UseSystemPasswordChar = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tb_appclientsecret);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.ll_devconsole);
+            this.groupBox1.Controls.Add(this.tb_appclientid);
+            this.groupBox1.Location = new System.Drawing.Point(273, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(260, 136);
+            this.groupBox1.TabIndex = 10;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Twitch Application";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Client Secret";
+            // 
+            // tb_appclientsecret
+            // 
+            this.tb_appclientsecret.Location = new System.Drawing.Point(6, 74);
+            this.tb_appclientsecret.Name = "tb_appclientsecret";
+            this.tb_appclientsecret.Size = new System.Drawing.Size(173, 20);
+            this.tb_appclientsecret.TabIndex = 13;
+            this.tb_appclientsecret.UseSystemPasswordChar = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Client ID";
+            // 
+            // ll_devconsole
+            // 
+            this.ll_devconsole.AutoSize = true;
+            this.ll_devconsole.Location = new System.Drawing.Point(187, 16);
+            this.ll_devconsole.Name = "ll_devconsole";
+            this.ll_devconsole.Size = new System.Drawing.Size(67, 13);
+            this.ll_devconsole.TabIndex = 7;
+            this.ll_devconsole.TabStop = true;
+            this.ll_devconsole.Text = "Create App";
+            this.ll_devconsole.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ll_devconsole_LinkClicked);
+            // 
+            // tb_appclientid
+            // 
+            this.tb_appclientid.Location = new System.Drawing.Point(6, 33);
+            this.tb_appclientid.Name = "tb_appclientid";
+            this.tb_appclientid.Size = new System.Drawing.Size(173, 20);
+            this.tb_appclientid.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(6, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(195, 36);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "As \"OAuth Redirect URL\" use http://localhost:8080/redirect/";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,11 +368,15 @@
             this.Text = "KHII - Reward Listener";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tp_authentication.ResumeLayout(false);
             this.gb_Authenticate.ResumeLayout(false);
             this.gb_Authenticate.PerformLayout();
             this.tp_modules.ResumeLayout(false);
+            this.tp_settings.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,7 +384,7 @@
         #endregion
 
         private TabControl tabControl1;
-        private TabPage tabPage1;
+        private TabPage tp_authentication;
         private TabPage tp_modules;
         private ListBox lb_modules;
         private Button bt_connect;
@@ -246,8 +392,21 @@
         private GroupBox gb_Authenticate;
         private TextBox tb_broadcaster;
         private LinkLabel ll_accesstoken;
-        private Label label2;
         private LinkLabel ll_devconsole;
+        private TabPage tp_settings;
+        private GroupBox groupBox1;
+        private Label label3;
+        private TextBox tb_appclientsecret;
         private Label label1;
+        private TextBox tb_appclientid;
+        private Label label2;
+        private TextBox tb_streameraccesstoken;
+        private GroupBox groupBox2;
+        private Label label4;
+        private TextBox tb_streamerrefreshtoken;
+        private Label label5;
+        private TextBox tb_streameraccountid;
+        private Button bt_streamerrefreshtoken;
+        private Label label6;
     }
 }
