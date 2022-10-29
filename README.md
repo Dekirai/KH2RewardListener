@@ -1,3 +1,6 @@
+
+
+
 # KH2RewardListener
 
 Viewers can interact with your KH2 session by using Channel Points on Twitch!
@@ -11,7 +14,7 @@ You got the full control of the settings of the rewards. You can name them yours
 ## Requirements
 
  - Latest version of Kingdom Hearts 1.5+2.5 HD ReMIX on Epic Games
- - Topaz' Re:Fined works too!
+ - TopazTK Re:Fined works too!
  - [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
 ## Information
@@ -31,17 +34,17 @@ Upon first time launching the program, it will generate a **config_rewards.ini**
 
  1.  Once the program is open, head over to "Settings Tab".
  2.  Make sure your Streamer Account is logged in on Twitch currently.
- 3.  Hit "Generate" and authorize the app.
- 4.  Now the "Streamer Account" Box should be filled out in the 3 boxes.
- 5.  Now click on "Create App" while being logged in on Twitch.
- 6.  Click on "Register your Application".
- 7.  Name the app whatever you want.
- 8.  As "OAuth Redirect URL" you set it to http://localhost:8080/redirect/
- 9.  As "Category" you set it to "Application Integration".
- 10. Hit "Create".  
- 11. Go back to the overview and click on your created app's name.
- 12. Copy "Client ID" and paste it in the program where it says "Client ID".
- 13. Click on "New Secret" and copy and paste it in the program where it says "Client Secret".
+ 3.  Now click on "Create App" while being logged in on Twitch.
+ 4.  Click on "Register your Application".
+ 5.  Name the app whatever you want.
+ 6.  As "OAuth Redirect URL" you set it to http://localhost:8080/redirect/
+ 7.  As "Category" you set it to "Application Integration".
+ 8. Hit "Create".  
+ 9. Go back to the overview and click on your created app's name.
+ 10. Copy "Client ID" and paste it in the program where it says "Client ID".
+ 11. Click on "New Secret" and copy and paste it in the program where it says "Client Secret".
+ 12. Hit "Generate" and authorize the app.
+ 13. Now the "Streamer Account" Box should be filled out in the 3 boxes.
  14. You should now be ready to go and click on "Start Bot". (Don't forget to type in your channel's name)
 
 ## Preview
