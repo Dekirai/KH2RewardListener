@@ -30,7 +30,7 @@ namespace KH2RewardListener
                 {
                     if (req.QueryString.AllKeys.Any("code".Contains))
                     {
-                        writer.WriteLine("Authorization started! Check your application!");
+                        writer.WriteLine("Done! You can close this page now.");
                         writer.Flush();
                         return new Authorization(req.QueryString["code"]);
                     }

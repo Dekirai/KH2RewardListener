@@ -22,7 +22,9 @@ namespace KH2RewardListener
         public static TwitchClient client = new TwitchClient();
         public static ITwitchAPI API;
         public static string channel = "";
+        private readonly LogService _logger;
 
+        #region UserControls
         Attack0Reward attack0 = new Attack0Reward();
         Attack255Reward attack255 = new Attack255Reward();
         AutoAttackReward autoattack = new AutoAttackReward();
@@ -64,7 +66,8 @@ namespace KH2RewardListener
         RefillHPReward refillhp = new RefillHPReward();
         RefillMPReward refillmp = new RefillMPReward();
         SoftResetReward softreset = new SoftResetReward();
-        private readonly LogService _logger;
+        #endregion
+
         public MainForm()
         {
             InitializeComponent();
@@ -264,6 +267,8 @@ namespace KH2RewardListener
         {
 
             var module = lb_modules.GetItemText(lb_modules.SelectedItem);
+
+            #region Modules
             if (module == "1 HP")
             {
                 DisposeAllUserControls();
@@ -469,6 +474,7 @@ namespace KH2RewardListener
                 DisposeAllUserControls();
                 SetUserControlPosition(driveanti);
             }
+            #endregion
         }
 
         private void GetPID()
@@ -483,6 +489,7 @@ namespace KH2RewardListener
         {
             UserControl[] userControlArray = new UserControl[41]
             {
+                #region UserControlsList
                 attack0,
                 attack255,
                 autoattack,
@@ -524,6 +531,7 @@ namespace KH2RewardListener
                 refillhp,
                 refillmp,
                 softreset
+                #endregion
             };
             foreach (UserControl userControl in userControlArray)
             {
@@ -558,7 +566,8 @@ namespace KH2RewardListener
             api.Settings.AccessToken = resp.AccessToken;
             api.Settings.ClientId = tb_appclientid.Text;
             var user = (await api.Helix.Users.GetUsersAsync()).Users[0];
-            MessageBox.Show($"Authorization success!\n\nUser: {user.DisplayName} (id: {user.Id})\nAccess token: {resp.AccessToken}\nRefresh token: {resp.RefreshToken}\nExpires in: {resp.ExpiresIn}\nScopes: {string.Join(", ", resp.Scopes)}\n\nInfo has been stored to the settings.\nYou may start the bot now.");
+            MessageBox.Show($"Authorization success!\n\nUser: {user.DisplayName} (id: {user.Id})\nExpires in: {resp.ExpiresIn}\nScopes: {string.Join(", ", resp.Scopes)}\n\nInfo has been stored to the settings.\nYou may start the bot now.");
+            tb_broadcaster.Text = user.DisplayName;
             tb_streameraccesstoken.Text = resp.AccessToken;
             tb_streamerrefreshtoken.Text = resp.RefreshToken;
             tb_streameraccountid.Text = user.Id;
