@@ -83,7 +83,7 @@ namespace KH2RewardListener
 
         private async void bt_connect_Click(object sender, EventArgs e)
         {
-            if (tb_streameraccesstoken.Text.Length < 1 || tb_appclientid.Text.Length < 1 || tb_appclientsecret.Text.Length < 1)
+            if (tb_broadcaster.Text.Length < 1 || tb_streameraccesstoken.Text.Length < 1 || tb_appclientid.Text.Length < 1 || tb_appclientsecret.Text.Length < 1)
             {
                 MessageBox.Show("Please head over to Settings and fill everything out first.");
                 return;
@@ -560,18 +560,22 @@ namespace KH2RewardListener
                 UseShellExecute = true
             });
 
+            _logger.Information("Starting authorization...");
+
             var auth = await server.Listen();
             var resp = await api.Auth.GetAccessTokenFromCodeAsync(auth.Code, tb_appclientsecret.Text, "http://localhost:8080/redirect/", tb_appclientid.Text);
 
             api.Settings.AccessToken = resp.AccessToken;
             api.Settings.ClientId = tb_appclientid.Text;
             var user = (await api.Helix.Users.GetUsersAsync()).Users[0];
-            MessageBox.Show($"Authorization success!\n\nUser: {user.DisplayName} (id: {user.Id})\nExpires in: {resp.ExpiresIn}\nScopes: {string.Join(", ", resp.Scopes)}\n\nInfo has been stored to the settings.\nYou may start the bot now.");
+            _logger.Information("Authorization success! You can listen to rewards now.");
+            _logger.Information($"Username: {user.DisplayName} (ID: {user.Id})");
             tb_broadcaster.Text = user.DisplayName;
             tb_streameraccesstoken.Text = resp.AccessToken;
             tb_streamerrefreshtoken.Text = resp.RefreshToken;
             tb_streameraccountid.Text = user.Id;
             Settings.Default.Save();
+            _logger.Information($"User information has been stored to the settings.");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
