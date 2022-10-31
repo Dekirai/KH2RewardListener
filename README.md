@@ -25,7 +25,7 @@ Upon first time launching the program, it will generate a **config_rewards.ini**
 **The program will close itself afterwards which means you have to restart it after you see the file appearing.**
 
 ## Packages
-[TwitchLib](https://github.com/TwitchLib/TwitchLib)  by TwitchLib
+[TwitchLib](https://github.com/TwitchLib/TwitchLib) by TwitchLib  
 [KH2MemLibrary](https://github.com/Dekirai/KHMemLibrary) by Dekirai  
 [Memory.dll](https://github.com/erfg12/memory.dll) by erfg12  
 [MadMilkman.ini](https://github.com/MarioZ/MadMilkman.Ini) by MarioZ  
