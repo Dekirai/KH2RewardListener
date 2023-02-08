@@ -18,7 +18,6 @@ namespace KH2RewardListener
         public static string DriveWisdom { get; set; }
         public static string EmptyDrive { get; set; }
         public static string EmptyMagic { get; set; }
-        public static string EndDrive { get; set; }
         public static string OneHP { get; set; }
         public static string RandomCamera { get; set; }
         public static string RandomConsumable { get; set; }
@@ -43,69 +42,10 @@ namespace KH2RewardListener
             dynamic refillhp_dyn = JsonConvert.DeserializeObject(refillhp_json);
             RefillHP = refillhp_dyn["Reward"]["Name"];
 
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
+            string refillmp_json = File.ReadAllText("Rewards/RefillMP.json");
+            dynamic refillmp_dyn = JsonConvert.DeserializeObject(refillmp_json);
+            RefillMP = refillmp_dyn["Reward"]["Name"];
 
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
-
-            //string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            //dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            //OneHP = onehp_dyn["Reward"]["RewardName"];
         }
     }
 }

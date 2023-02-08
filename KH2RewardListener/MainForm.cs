@@ -126,9 +126,6 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.EmptyMagic:
                         OneHP.DoAction();
                         break;
-                    case var value when value == RewardManager.EndDrive:
-                        OneHP.DoAction();
-                        break;
                     case var value when value == RewardManager.OneHP:
                         OneHP.DoAction();
                         break;
@@ -151,7 +148,7 @@ namespace KH2RewardListener
                         RefillHP.DoAction();
                         break;
                     case var value when value == RewardManager.RefillMP:
-                        OneHP.DoAction();
+                        RefillMP.DoAction();
                         break;
                     case var value when value == RewardManager.SoftReset:
                         OneHP.DoAction();

@@ -22,6 +22,7 @@ namespace KH2RewardListener.Rewards
             dynamic reward = JsonConvert.DeserializeObject(rewardjson);
 
             string chatmessage = reward["Reward"]["Message"];
+            string endmessage = reward["Reward"]["EndMessage"];
             string duration = reward["Reward"]["Duration"];
             int counter = int.Parse(duration);
 
@@ -31,11 +32,18 @@ namespace KH2RewardListener.Rewards
             {
                 while (counter > 0)
                 {
+                    int _isPaused = mem.ReadByte($"{process}.exe+AB9054");
+                    if (_isPaused == 1)
+                    {
+                        Thread.Sleep(1000);
+                        continue;
+                    }
                     mem.WriteMemory($"{process}.exe+0x2A5A096", "byte", "0x01");
                     Thread.Sleep(1000);
                     counter--;
                 }
                 mem.WriteMemory($"{process}.exe+0x2A5A096", "byte", "0x00");
+                MainForm.client.SendMessage(MainForm.channel, endmessage);
             }).Start();
         }
     }
