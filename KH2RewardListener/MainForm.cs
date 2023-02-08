@@ -26,8 +26,6 @@ namespace KH2RewardListener
         public static string channel = "";
         private readonly LogService _logger;
 
-        RewardManager rewardManager = new RewardManager();
-
         public MainForm()
         {
             InitializeComponent();
@@ -96,62 +94,66 @@ namespace KH2RewardListener
         private async void PubSub_OnRewardRedeemed(object sender, OnRewardRedeemedArgs e)
         {
             GetPID();
+            RewardManager.GetRewardNames();
             if (e.Status != "ACTION_TAKEN")
             {
                 switch (e.RewardTitle)
                 {
-                    case var value when value == rewardManager.DriveAnti:
+                    case var value when value == RewardManager.AutoAttack:
+                        AutoAttack.DoAction();
+                        break;
+                    case var value when value == RewardManager.DriveAnti:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.DriveFinal:
+                    case var value when value == RewardManager.DriveFinal:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.DriveLimit:
+                    case var value when value == RewardManager.DriveLimit:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.DriveMaster:
+                    case var value when value == RewardManager.DriveMaster:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.DriveValor:
+                    case var value when value == RewardManager.DriveValor:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.DriveWisdom:
+                    case var value when value == RewardManager.DriveWisdom:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.EmptyDrive:
+                    case var value when value == RewardManager.EmptyDrive:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.EmptyMagic:
+                    case var value when value == RewardManager.EmptyMagic:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.EndDrive:
+                    case var value when value == RewardManager.EndDrive:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.OneHP:
+                    case var value when value == RewardManager.OneHP:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.RandomCamera:
+                    case var value when value == RewardManager.RandomCamera:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.RandomConsumable:
+                    case var value when value == RewardManager.RandomConsumable:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.RandomKeyblade:
+                    case var value when value == RewardManager.RandomKeyblade:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.RefillDrive:
+                    case var value when value == RewardManager.RefillDrive:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.RefillFormDuration:
+                    case var value when value == RewardManager.RefillFormDuration:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.RefillHP:
+                    case var value when value == RewardManager.RefillHP:
                         RefillHP.DoAction();
                         break;
-                    case var value when value == rewardManager.RefillMP:
+                    case var value when value == RewardManager.RefillMP:
                         OneHP.DoAction();
                         break;
-                    case var value when value == rewardManager.SoftReset:
+                    case var value when value == RewardManager.SoftReset:
                         OneHP.DoAction();
                         break;
                 }
