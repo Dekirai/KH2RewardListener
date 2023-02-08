@@ -32,10 +32,9 @@
             this.tp_authentication = new System.Windows.Forms.TabPage();
             this.bt_connect = new System.Windows.Forms.Button();
             this.rtb_Log = new System.Windows.Forms.RichTextBox();
-            this.tp_modules = new System.Windows.Forms.TabPage();
-            this.lb_modules = new System.Windows.Forms.ListBox();
             this.tp_settings = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tb_broadcaster = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,10 +51,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ll_devconsole = new System.Windows.Forms.LinkLabel();
             this.tb_appclientid = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tp_authentication.SuspendLayout();
-            this.tp_modules.SuspendLayout();
             this.tp_settings.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,7 +61,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tp_authentication);
-            this.tabControl1.Controls.Add(this.tp_modules);
             this.tabControl1.Controls.Add(this.tp_settings);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -105,68 +101,6 @@
             this.rtb_Log.TabIndex = 1;
             this.rtb_Log.Text = "";
             // 
-            // tp_modules
-            // 
-            this.tp_modules.BackColor = System.Drawing.SystemColors.Control;
-            this.tp_modules.Controls.Add(this.lb_modules);
-            this.tp_modules.Location = new System.Drawing.Point(4, 24);
-            this.tp_modules.Name = "tp_modules";
-            this.tp_modules.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_modules.Size = new System.Drawing.Size(692, 309);
-            this.tp_modules.TabIndex = 1;
-            this.tp_modules.Text = "Rewards";
-            // 
-            // lb_modules
-            // 
-            this.lb_modules.FormattingEnabled = true;
-            this.lb_modules.Items.AddRange(new object[] {
-            "1 HP",
-            "30 FPS",
-            "Attack 0",
-            "Attack 255",
-            "Auto-Attack",
-            "Auto-Jump",
-            "Blind Sight",
-            "Block Input",
-            "Block Pause",
-            "Defense 0",
-            "Defense 255",
-            "Drive Anywhere",
-            "Empty Drive",
-            "Empty Magic",
-            "End Drive",
-            "Flashbang",
-            "FoV",
-            "Force Anti",
-            "Force Final",
-            "Force Limit",
-            "Force Master",
-            "Force Wisdom",
-            "Force Valor",
-            "Game Speed",
-            "Invisible Models",
-            "Magic 0",
-            "Magic 255",
-            "Movement Speed",
-            "No Attack",
-            "No Drive",
-            "No Items",
-            "No Magic",
-            "Phone Mode",
-            "Random Camera",
-            "Random Consumable",
-            "Random Keyblade",
-            "Refill Drive",
-            "Refill Form Duration",
-            "Refill HP",
-            "Refill MP",
-            "Soft Reset"});
-            this.lb_modules.Location = new System.Drawing.Point(6, 6);
-            this.lb_modules.Name = "lb_modules";
-            this.lb_modules.Size = new System.Drawing.Size(146, 303);
-            this.lb_modules.TabIndex = 2;
-            this.lb_modules.SelectedIndexChanged += new System.EventHandler(this.lb_modules_SelectedIndexChanged);
-            // 
             // tp_settings
             // 
             this.tp_settings.BackColor = System.Drawing.SystemColors.Control;
@@ -196,6 +130,14 @@
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Streamer Account";
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(6, 181);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(248, 30);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Make sure to fill out the Client ID and Client Secret first before logging in!";
             // 
             // label7
             // 
@@ -345,14 +287,6 @@
             this.tb_appclientid.Size = new System.Drawing.Size(173, 20);
             this.tb_appclientid.TabIndex = 11;
             // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(6, 181);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(248, 30);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Make sure to fill out the Client ID and Client Secret first before logging in!";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,7 +301,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.tp_authentication.ResumeLayout(false);
-            this.tp_modules.ResumeLayout(false);
             this.tp_settings.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -381,8 +314,6 @@
 
         private TabControl tabControl1;
         private TabPage tp_authentication;
-        private TabPage tp_modules;
-        private ListBox lb_modules;
         private Button bt_connect;
         private RichTextBox rtb_Log;
         private LinkLabel ll_accesstoken;

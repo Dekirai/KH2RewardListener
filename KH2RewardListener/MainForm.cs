@@ -11,6 +11,8 @@ using KHMemLibrary;
 using Memory;
 using KH2RewardListener.UserControls;
 using KH2RewardListener.Properties;
+using KH2RewardListener.Rewards;
+using Newtonsoft.Json;
 
 namespace KH2RewardListener
 {
@@ -24,49 +26,7 @@ namespace KH2RewardListener
         public static string channel = "";
         private readonly LogService _logger;
 
-        #region UserControls
-        Attack0Reward attack0 = new Attack0Reward();
-        Attack255Reward attack255 = new Attack255Reward();
-        AutoAttackReward autoattack = new AutoAttackReward();
-        AutoJumpReward autojump = new AutoJumpReward();
-        BlindSightReward blindsight = new BlindSightReward();
-        BlockInputReward blockinput = new BlockInputReward();
-        BlockPauseReward blockpause = new BlockPauseReward();
-        Defense0Reward defense0 = new Defense0Reward();
-        Defense255Reward defense255 = new Defense255Reward();
-        DriveAntiReward driveanti = new DriveAntiReward();
-        DriveAnywhereReward driveanywhere = new DriveAnywhereReward();
-        DriveFinalReward drivefinal = new DriveFinalReward();
-        DriveLimitReward drivelimit = new DriveLimitReward();
-        DriveMasterReward drivemaster = new DriveMasterReward();
-        DriveValorReward drivevalor = new DriveValorReward();
-        DriveWisdomReward drivewisdom = new DriveWisdomReward();
-        EmptyDriveReward emptydrive = new EmptyDriveReward();
-        EmptyMagicReward emptymagic = new EmptyMagicReward();
-        EndDriveReward enddrive = new EndDriveReward();
-        FlashbangReward flashbang = new FlashbangReward();
-        FOVReward fov = new FOVReward();
-        FPS30Reward fps30 = new FPS30Reward();
-        GameSpeedReward gamespeed = new GameSpeedReward();
-        InvisibleModelsReward invisiblemodels = new InvisibleModelsReward();
-        Magic0Reward magic0 = new Magic0Reward();
-        Magic255Reward magic255 = new Magic255Reward();
-        MovementSpeedReward movementspeed = new MovementSpeedReward();
-        NoAttackReward noattack = new NoAttackReward();
-        NoDriveReward nodrive = new NoDriveReward();
-        NoItemsReward noitems = new NoItemsReward();
-        NoMagicReward nomagic = new NoMagicReward();
-        OneHPReward onehp = new OneHPReward();
-        PhoneModeReward phonemode = new PhoneModeReward();
-        RandomCameraReward randomcamera = new RandomCameraReward();
-        RandomConsumableReward randomconsumable = new RandomConsumableReward();
-        RandomKeybladeReward randomkeyblade = new RandomKeybladeReward();
-        RefillDriveReward refilldrive = new RefillDriveReward();
-        RefillFormDurationReward refillformduration = new RefillFormDurationReward();
-        RefillHPReward refillhp = new RefillHPReward();
-        RefillMPReward refillmp = new RefillMPReward();
-        SoftResetReward softreset = new SoftResetReward();
-        #endregion
+        RewardManager rewardManager = new RewardManager();
 
         public MainForm()
         {
@@ -91,9 +51,15 @@ namespace KH2RewardListener
             var API = new TwitchAPI();
             channel = tb_broadcaster.Text;
             bt_connect.Enabled = false;
-            ConnectionCredentials creds = new ConnectionCredentials(tb_broadcaster.Text, tb_streameraccesstoken.Text);
             API.Settings.ClientId = tb_appclientid.Text;
             API.Settings.Secret = tb_appclientsecret.Text;
+
+            _logger.Information("Refreshing access token...");
+            var refresh = await API.Auth.RefreshAuthTokenAsync(tb_streamerrefreshtoken.Text, tb_appclientsecret.Text, tb_appclientid.Text);
+            tb_streameraccesstoken.Text = refresh.AccessToken;
+            _logger.Information("Access token has been refreshed!");
+
+            ConnectionCredentials creds = new ConnectionCredentials(tb_broadcaster.Text, tb_streameraccesstoken.Text);
 
             client.Initialize(creds, tb_broadcaster.Text);
             client.OnConnected += Client_OnConnected;
@@ -132,91 +98,62 @@ namespace KH2RewardListener
             GetPID();
             if (e.Status != "ACTION_TAKEN")
             {
-                if (e.RewardTitle == onehp.RewardName)
-                    onehp.DoAction();
-                else if (e.RewardTitle == autoattack.RewardName)
-                    autoattack.DoAction();
-                else if (e.RewardTitle == blindsight.RewardName)
-                    blindsight.DoAction();
-                else if (e.RewardTitle == blockinput.RewardName)
-                    blockinput.DoAction();
-                else if (e.RewardTitle == blockpause.RewardName)
-                    blockpause.DoAction();
-                else if (e.RewardTitle == flashbang.RewardName)
-                    flashbang.DoAction();
-                else if (e.RewardTitle == invisiblemodels.RewardName)
-                    invisiblemodels.DoAction();
-                else if (e.RewardTitle == phonemode.RewardName)
-                    phonemode.DoAction();
-                else if (e.RewardTitle == randomcamera.RewardName)
-                    randomcamera.DoAction();
-                else if (e.RewardTitle == softreset.RewardName)
-                    softreset.DoAction();
-                else if (e.RewardTitle == refillhp.RewardName)
-                    refillhp.DoAction();
-                else if (e.RewardTitle == refillmp.RewardName)
-                    refillmp.DoAction();
-                else if (e.RewardTitle == refilldrive.RewardName)
-                    refilldrive.DoAction();
-                else if (e.RewardTitle == autojump.RewardName)
-                    autojump.DoAction();
-                else if (e.RewardTitle == gamespeed.RewardName)
-                    gamespeed.DoAction();
-                else if (e.RewardTitle == movementspeed.RewardName)
-                    movementspeed.DoAction();
-                else if (e.RewardTitle == fps30.RewardName)
-                    fps30.DoAction();
-                else if (e.RewardTitle == fov.RewardName)
-                    fov.DoAction();
-                else if (e.RewardTitle == nomagic.RewardName)
-                    nomagic.DoAction();
-                else if (e.RewardTitle == noattack.RewardName)
-                    noattack.DoAction();
-                else if (e.RewardTitle == noitems.RewardName)
-                    noitems.DoAction();
-                else if (e.RewardTitle == nodrive.RewardName)
-                    nodrive.DoAction();
-                else if (e.RewardTitle == attack0.RewardName)
-                    attack0.DoAction();
-                else if (e.RewardTitle == attack255.RewardName)
-                    attack255.DoAction();
-                else if (e.RewardTitle == magic0.RewardName)
-                    magic0.DoAction();
-                else if (e.RewardTitle == magic255.RewardName)
-                    magic255.DoAction();
-                else if (e.RewardTitle == defense0.RewardName)
-                    defense0.DoAction();
-                else if (e.RewardTitle == defense255.RewardName)
-                    defense255.DoAction();
-                else if (e.RewardTitle == emptymagic.RewardName)
-                    emptymagic.DoAction();
-                else if (e.RewardTitle == emptydrive.RewardName)
-                    emptydrive.DoAction();
-                else if (e.RewardTitle == randomconsumable.RewardName)
-                    randomconsumable.DoAction();
-                else if (e.RewardTitle == randomkeyblade.RewardName)
-                    randomkeyblade.DoAction();
-                else if (e.RewardTitle == enddrive.RewardName)
-                    enddrive.DoAction();
-                else if (e.RewardTitle == driveanywhere.RewardName)
-                    driveanywhere.DoAction();
-                else if (e.RewardTitle == refillformduration.RewardName)
-                    refillformduration.DoAction();
-                else if (e.RewardTitle == drivefinal.RewardName)
-                    drivefinal.DoAction();
-                else if (e.RewardTitle == drivelimit.RewardName)
-                    drivelimit.DoAction();
-                else if (e.RewardTitle == drivemaster.RewardName)
-                    drivemaster.DoAction();
-                else if (e.RewardTitle == drivewisdom.RewardName)
-                    drivewisdom.DoAction();
-                else if (e.RewardTitle == drivevalor.RewardName)
-                    drivevalor.DoAction();
-                else if (e.RewardTitle == driveanti.RewardName)
-                    driveanti.DoAction();
-                else
+                switch (e.RewardTitle)
                 {
-                    //Do nothing
+                    case var value when value == rewardManager.DriveAnti:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.DriveFinal:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.DriveLimit:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.DriveMaster:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.DriveValor:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.DriveWisdom:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.EmptyDrive:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.EmptyMagic:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.EndDrive:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.OneHP:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.RandomCamera:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.RandomConsumable:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.RandomKeyblade:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.RefillDrive:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.RefillFormDuration:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.RefillHP:
+                        RefillHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.RefillMP:
+                        OneHP.DoAction();
+                        break;
+                    case var value when value == rewardManager.SoftReset:
+                        OneHP.DoAction();
+                        break;
                 }
                 _logger.Information($"User {e.DisplayName} redeemed '{e.RewardTitle}' for {e.RewardCost} Channel Points.");
             }
@@ -263,291 +200,12 @@ namespace KH2RewardListener
             }));
         }
 
-        private void lb_modules_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            var module = lb_modules.GetItemText(lb_modules.SelectedItem);
-
-            #region Modules
-            if (module == "1 HP")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(onehp);
-            }
-            else if (module == "Block Input")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(blockinput);
-            }
-            else if (module == "Block Pause")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(blockpause);
-            }
-            else if (module == "Soft Reset")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(softreset);
-            }
-            else if (module == "Auto-Attack")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(autoattack);
-            }
-            else if (module == "Refill HP")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(refillhp);
-            }
-            else if (module == "Refill MP")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(refillmp);
-            }
-            else if (module == "Refill Drive")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(refilldrive);
-            }
-            else if (module == "Auto-Jump")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(autojump);
-            }
-            else if (module == "Game Speed")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(gamespeed);
-            }
-            else if (module == "Movement Speed")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(movementspeed);
-            }
-            else if (module == "30 FPS")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(fps30);
-            }
-            else if (module == "FoV")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(fov);
-            }
-            else if (module == "No Magic")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(nomagic);
-            }
-            else if (module == "No Attack")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(noattack);
-            }
-            else if (module == "No Drive")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(nodrive);
-            }
-            else if (module == "No Items")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(noitems);
-            }
-            else if (module == "Attack 0")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(attack0);
-            }
-            else if (module == "Magic 0")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(magic0);
-            }
-            else if (module == "Defense 0")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(defense0);
-            }
-            else if (module == "Empty Magic")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(emptymagic);
-            }
-            else if (module == "Empty Drive")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(emptydrive);
-            }
-            else if (module == "Random Consumable")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(randomconsumable);
-            }
-            else if (module == "Random Keyblade")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(randomkeyblade);
-            }
-            else if (module == "Attack 255")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(attack255);
-            }
-            else if (module == "Blind Sight")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(blindsight);
-            }
-            else if (module == "Defense 255")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(defense255);
-            }
-            else if (module == "Flashbang")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(flashbang);
-            }
-            else if (module == "Invisible Models")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(invisiblemodels);
-            }
-            else if (module == "Magic 255")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(magic255);
-            }
-            else if (module == "Phone Mode")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(phonemode);
-            }
-            else if (module == "Random Camera")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(randomcamera);
-            }
-            else if (module == "End Drive")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(enddrive);
-            }
-            else if (module == "Drive Anywhere")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(driveanywhere);
-            }
-            else if (module == "Refill Form Duration")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(refillformduration);
-            }
-            else if (module == "Force Final")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(drivefinal);
-            }
-            else if (module == "Force Limit")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(drivelimit);
-            }
-            else if (module == "Force Master")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(drivemaster);
-            }
-            else if (module == "Force Wisdom")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(drivewisdom);
-            }
-            else if (module == "Force Valor")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(drivevalor);
-            }
-            else if (module == "Force Anti")
-            {
-                DisposeAllUserControls();
-                SetUserControlPosition(driveanti);
-            }
-            #endregion
-        }
-
         private void GetPID()
         {
             int pid = mem.GetProcIdFromName("KINGDOM HEARTS II FINAL MIX");
             bool openProc = false;
 
             if (pid > 0) openProc = mem.OpenProcess(pid);
-        }
-
-        private void DisposeAllUserControls()
-        {
-            UserControl[] userControlArray = new UserControl[41]
-            {
-                #region UserControlsList
-                attack0,
-                attack255,
-                autoattack,
-                autojump,
-                blindsight,
-                blockinput,
-                blockpause,
-                defense0,
-                defense255,
-                driveanti,
-                driveanywhere,
-                drivefinal,
-                drivelimit,
-                drivemaster,
-                drivewisdom,
-                drivevalor,
-                emptydrive,
-                emptymagic,
-                enddrive,
-                flashbang,
-                fov,
-                fps30,
-                gamespeed,
-                invisiblemodels,
-                magic0,
-                magic255,
-                movementspeed,
-                noattack,
-                nodrive,
-                noitems,
-                nomagic,
-                onehp,
-                phonemode,
-                randomcamera,
-                randomconsumable,
-                randomkeyblade,
-                refilldrive,
-                refillformduration,
-                refillhp,
-                refillmp,
-                softreset
-                #endregion
-            };
-            foreach (UserControl userControl in userControlArray)
-            {
-                try { tp_modules.Controls.Remove(userControl); }
-                catch
-                {
-                    //nothing
-                }
-            }
-        }
-
-        private void SetUserControlPosition(UserControl control)
-        {
-            control.Location = new Point(180, 6);
-            control.Size = new Size(528, 300);
-            tp_modules.Controls.Add(control);
         }
         private async void ll_accesstoken_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -561,7 +219,6 @@ namespace KH2RewardListener
             });
 
             _logger.Information("Starting authorization...");
-
             var auth = await server.Listen();
             var resp = await api.Auth.GetAccessTokenFromCodeAsync(auth.Code, tb_appclientsecret.Text, "http://localhost:8080/redirect/", tb_appclientid.Text);
 
