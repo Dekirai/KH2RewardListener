@@ -14,43 +14,18 @@ You got the full control of the settings of the rewards. You can name them yours
 ## Requirements
 
  - Latest version of Kingdom Hearts 1.5+2.5 HD ReMIX on Epic Games
- - TopazTK Re:Fined works too!
  - [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
-
-## Information
-You can read a full reward breakdown in the [Wiki](https://github.com/Dekirai/KH2RewardListener/wiki/Rewards).    
-There you can see what exactly each reward does in your game!  
-
-Upon first time launching the program, it will generate a **config_rewards.ini** file where a config for every reward will get generated.  
-**The program will close itself afterwards which means you have to restart it after you see the file appearing.**
 
 ## Packages
 [TwitchLib](https://github.com/TwitchLib/TwitchLib) by TwitchLib  
-[KH2MemLibrary](https://github.com/Dekirai/KHMemLibrary) by Dekirai  
-[Memory.dll](https://github.com/erfg12/memory.dll) by erfg12  
-[MadMilkman.ini](https://github.com/MarioZ/MadMilkman.Ini) by MarioZ  
+[Memory.dll](https://github.com/erfg12/memory.dll) by erfg12
 
 ## Tutorial
-
- 1. Once the program is open, head over to "Settings Tab".
- 2. Make sure your Streamer Account is logged in on Twitch currently.
- 3. Now click on "Create App" while being logged in on Twitch.
- 4. Click on "Register your Application".
- 5. Name the app whatever you want.
- 6. As "OAuth Redirect URL" you set it to http://localhost:8080/redirect/
- 7. As "Category" you set it to "Application Integration".
- 8. Hit "Create".  
- 9. Go back to the overview and click on your created app's name.
- 10. Copy "Client ID" and paste it in the program where it says "Client ID".
- 11. Click on "New Secret" and copy and paste it in the program where it says "Client Secret".
- 12. Hit "Generate" and authorize the app.
- 13. Now the "Streamer Account" Box should be filled out in the 4 boxes.
- 14. You should now be ready to go and click on "Listen to Rewards".
+To be written
 
 ## Preview
-
-![Image1](https://i.imgur.com/YwHbhPO.png)![Image2](https://i.imgur.com/gemrJC4.png) ![Image3](https://i.imgur.com/ffUnPgZ.png) ![Image4](https://i.imgur.com/45R5hFP.png)
+To be added
 
 ## Credits and Thanks
- - WaterKH - For the [Re:Write](https://github.com/WaterKH/ReWrite) inspiration and trying to help me
- - TopazTK - For telling me to not store 1000+ lines of code in a single file. :)
+ - WaterKH - For the [Re:Write](https://github.com/WaterKH/ReWrite) inspiration and some help
+ - [NobodyDaxian](https://www.twitch.tv/nobodydaxian) - Many tests, suggestions for improvement and bug hunting
