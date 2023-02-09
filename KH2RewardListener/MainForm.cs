@@ -135,6 +135,12 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.RandomConsumable:
                         RandomConsumable.DoAction();
                         break;
+                    case var value when value == RewardManager.RandomDefense:
+                        RandomDefense.DoAction();
+                        break;
+                    case var value when value == RewardManager.RandomMagic:
+                        RandomMagic.DoAction();
+                        break;
                     case var value when value == RewardManager.RandomStrength:
                         RandomStrength.DoAction();
                         break;
