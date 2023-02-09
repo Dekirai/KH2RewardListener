@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace KH2RewardListener.Rewards
 {
-    public class RefillHP
+    public class SoftReset
     {
         static Mem mem = new Mem();
         static string process = "KINGDOM HEARTS II FINAL MIX";
@@ -18,13 +18,15 @@ namespace KH2RewardListener.Rewards
         public static void DoAction()
         {
             GetPID();
-            string rewardjson = File.ReadAllText("Rewards/RefillHP.json");
+            string rewardjson = File.ReadAllText("Rewards/SoftReset.json");
             dynamic reward = JsonConvert.DeserializeObject(rewardjson);
 
             string chatmessage = reward["Reward"]["Message"];
 
             MainForm.client.SendMessage(MainForm.channel, chatmessage);
-            mem.WriteMemory($"{process}.exe+2A20C98", "int", $"{mem.ReadInt($"{process}.exe+2A20C9C")}");
+            mem.WriteMemory($"{process}.exe+AB845A", "byte", $"0x01");
+            mem.WriteMemory($"{process}.exe+751310", "int", $"1");
+            mem.WriteMemory($"{process}.exe+2AE3478", "byte", $"0x00");
         }
     }
 }

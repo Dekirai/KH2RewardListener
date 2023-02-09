@@ -103,10 +103,10 @@ namespace KH2RewardListener
                         AutoAttack.DoAction();
                         break;
                     case var value when value == RewardManager.DriveAnti:
-                        OneHP.DoAction();
+                        DriveAnti.DoAction();
                         break;
                     case var value when value == RewardManager.DriveFinal:
-                        OneHP.DoAction();
+                        DriveFinal.DoAction();
                         break;
                     case var value when value == RewardManager.DriveLimit:
                         OneHP.DoAction();
@@ -121,10 +121,10 @@ namespace KH2RewardListener
                         OneHP.DoAction();
                         break;
                     case var value when value == RewardManager.EmptyDrive:
-                        OneHP.DoAction();
+                        EmptyDrive.DoAction();
                         break;
                     case var value when value == RewardManager.EmptyMagic:
-                        OneHP.DoAction();
+                        EmptyMagic.DoAction();
                         break;
                     case var value when value == RewardManager.OneHP:
                         OneHP.DoAction();
@@ -133,16 +133,16 @@ namespace KH2RewardListener
                         OneHP.DoAction();
                         break;
                     case var value when value == RewardManager.RandomConsumable:
-                        OneHP.DoAction();
+                        RandomConsumable.DoAction();
                         break;
                     case var value when value == RewardManager.RandomKeyblade:
                         OneHP.DoAction();
                         break;
                     case var value when value == RewardManager.RefillDrive:
-                        OneHP.DoAction();
+                        RefillDrive.DoAction();
                         break;
                     case var value when value == RewardManager.RefillFormDuration:
-                        OneHP.DoAction();
+                        RefillFormDuration.DoAction();
                         break;
                     case var value when value == RewardManager.RefillHP:
                         RefillHP.DoAction();
@@ -151,7 +151,7 @@ namespace KH2RewardListener
                         RefillMP.DoAction();
                         break;
                     case var value when value == RewardManager.SoftReset:
-                        OneHP.DoAction();
+                        SoftReset.DoAction();
                         break;
                 }
                 _logger.Information($"User {e.DisplayName} redeemed '{e.RewardTitle}' for {e.RewardCost} Channel Points.");

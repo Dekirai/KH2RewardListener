@@ -1,6 +1,5 @@
 ﻿using Memory;
 using Newtonsoft.Json;
-using System;
 
 namespace KH2RewardListener.Rewards
 {

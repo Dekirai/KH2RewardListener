@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KH2RewardListener.Memory
+﻿namespace KH2RewardListener.Memory
 {
     public class Consumables
     {
-        public static async Task<string[]> GetConsumable(int consumable)
+        public static string[] GetConsumable(int consumable)
         {
             List<string> getconsumable = new List<string>();
 

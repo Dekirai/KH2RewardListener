@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace KH2RewardListener.Rewards
 {
-    public class RefillHP
+    public class RefillDrive
     {
         static Mem mem = new Mem();
         static string process = "KINGDOM HEARTS II FINAL MIX";
@@ -18,13 +18,14 @@ namespace KH2RewardListener.Rewards
         public static void DoAction()
         {
             GetPID();
-            string rewardjson = File.ReadAllText("Rewards/RefillHP.json");
+            string rewardjson = File.ReadAllText("Rewards/RefillDrive.json");
             dynamic reward = JsonConvert.DeserializeObject(rewardjson);
 
             string chatmessage = reward["Reward"]["Message"];
 
             MainForm.client.SendMessage(MainForm.channel, chatmessage);
-            mem.WriteMemory($"{process}.exe+2A20C98", "int", $"{mem.ReadInt($"{process}.exe+2A20C9C")}");
+            mem.WriteMemory($"{process}.exe+2A20E49", "byte", $"{mem.ReadByte($"{process}.exe+2A20E4A")}");
+            mem.WriteMemory($"{process}.exe+2A20E48", "byte", "0x63");
         }
     }
 }
