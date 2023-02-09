@@ -1,8 +1,5 @@
 ﻿using Memory;
 using Newtonsoft.Json;
-using System.Diagnostics.Metrics;
-using System.Reflection;
-using TwitchLib.Client.Models;
 
 namespace KH2RewardListener.Rewards
 {
@@ -38,8 +35,9 @@ namespace KH2RewardListener.Rewards
                     int _isPaused = mem.ReadByte($"{process}.exe+AB9054");
                     int _isForm = mem.ReadByte($"{process}.exe+9AA5D4");
                     int _cantMove = mem.ReadByte($"{process}.exe+2A148E8");
+                    int _isMapLoaded = mem.ReadByte($"{process}.exe+9B80D0");
                     int _isWorldMap = mem.ReadByte($"{process}.exe+714DB8");
-                    if (_isPaused > 0 || _isForm > 0 || _cantMove > 0 || _isWorldMap == 15)
+                    if (_isPaused > 0 || _isForm > 0 || _cantMove > 0 || _isWorldMap == 15 || _isMapLoaded == 0)
                     {
                         Thread.Sleep(3500);
                         continue;

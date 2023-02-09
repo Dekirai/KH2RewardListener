@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using KH2RewardListener.Rewards;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,9 @@ namespace KH2RewardListener
         public static string? OneHP { get; set; }
         public static string? RandomCamera { get; set; }
         public static string? RandomConsumable { get; set; }
-        public static string? RandomKeyblade { get; set; }
+        public static string? RandomDefense { get; set; }
+        public static string? RandomMagic { get; set; }
+        public static string? RandomStrength { get; set; }
         public static string? RefillDrive { get; set; }
         public static string? RefillFormDuration { get; set; }
         public static string? RefillHP { get; set; }
@@ -73,6 +76,18 @@ namespace KH2RewardListener
             string randomconsumable_json = File.ReadAllText("Rewards/RandomConsumable.json");
             dynamic randomconsumable_dyn = JsonConvert.DeserializeObject(randomconsumable_json);
             RandomConsumable = randomconsumable_dyn["Reward"]["Name"];
+
+            string randomdefense_json = File.ReadAllText("Rewards/RandomDefense.json");
+            dynamic randomdefense_dyn = JsonConvert.DeserializeObject(randomdefense_json);
+            RandomDefense = randomdefense_dyn["Reward"]["Name"];
+
+            string randommagic_json = File.ReadAllText("Rewards/RandomMagic.json");
+            dynamic randommagic_dyn = JsonConvert.DeserializeObject(randommagic_json);
+            RandomMagic = randommagic_dyn["Reward"]["Name"];
+
+            string randomstrength_json = File.ReadAllText("Rewards/RandomStrength.json");
+            dynamic randomstrength_dyn = JsonConvert.DeserializeObject(randomstrength_json);
+            RandomStrength = randomstrength_dyn["Reward"]["Name"];
 
             string refilldrive_json = File.ReadAllText("Rewards/RefillDrive.json");
             dynamic refilldrive_dyn = JsonConvert.DeserializeObject(refilldrive_json);

@@ -23,8 +23,26 @@ namespace KH2RewardListener.Rewards
 
             string chatmessage = reward["Reward"]["Message"];
 
-            MainForm.client.SendMessage(MainForm.channel, chatmessage);
-            mem.WriteMemory($"{process}.exe+2A20C98", "int", $"{mem.ReadInt($"{process}.exe+2A20C9C")}");
+            int counter = 1;
+
+            new Thread(() =>
+            {
+                while (counter > 0)
+                {
+                    //int _isPaused = mem.ReadByte($"{process}.exe+AB9054");
+                    //int _cantMove = mem.ReadByte($"{process}.exe+2A148E8");
+                    //int _isWorldMap = mem.ReadByte($"{process}.exe+714DB8");
+                    int _isMapLoaded = mem.ReadByte($"{process}.exe+9B80D0");
+                    if (_isMapLoaded == 0)
+                    {
+                        Thread.Sleep(1000);
+                        continue;
+                    }
+                    MainForm.client.SendMessage(MainForm.channel, chatmessage);
+                    mem.WriteMemory($"{process}.exe+2A20C98", "int", $"{mem.ReadInt($"{process}.exe+2A20C9C")}");
+                    counter--;
+                }
+            }).Start();
         }
     }
 }

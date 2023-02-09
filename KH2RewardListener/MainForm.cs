@@ -109,16 +109,16 @@ namespace KH2RewardListener
                         DriveFinal.DoAction();
                         break;
                     case var value when value == RewardManager.DriveLimit:
-                        OneHP.DoAction();
+                        DriveLimit.DoAction();
                         break;
                     case var value when value == RewardManager.DriveMaster:
-                        OneHP.DoAction();
+                        DriveMaster.DoAction();
                         break;
                     case var value when value == RewardManager.DriveValor:
-                        OneHP.DoAction();
+                        DriveValor.DoAction();
                         break;
                     case var value when value == RewardManager.DriveWisdom:
-                        OneHP.DoAction();
+                        DriveWisdom.DoAction();
                         break;
                     case var value when value == RewardManager.EmptyDrive:
                         EmptyDrive.DoAction();
@@ -135,8 +135,8 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.RandomConsumable:
                         RandomConsumable.DoAction();
                         break;
-                    case var value when value == RewardManager.RandomKeyblade:
-                        OneHP.DoAction();
+                    case var value when value == RewardManager.RandomStrength:
+                        RandomStrength.DoAction();
                         break;
                     case var value when value == RewardManager.RefillDrive:
                         RefillDrive.DoAction();
