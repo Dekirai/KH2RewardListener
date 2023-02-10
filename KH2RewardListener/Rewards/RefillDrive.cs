@@ -24,7 +24,7 @@ namespace KH2RewardListener.Rewards
             string chatmessage = reward["Reward"]["Message"];
 
             int counter = 1;
-
+            MainForm.client.SendMessage(MainForm.channel, chatmessage);
             new Thread(() =>
             {
                 while (counter > 0)
@@ -38,7 +38,6 @@ namespace KH2RewardListener.Rewards
                         Thread.Sleep(1000);
                         continue;
                     }
-                    MainForm.client.SendMessage(MainForm.channel, chatmessage);
                     mem.WriteMemory($"{process}.exe+2A20E49", "byte", $"{mem.ReadByte($"{process}.exe+2A20E4A")}");
                     mem.WriteMemory($"{process}.exe+2A20E48", "byte", "0x63");
                     counter--;

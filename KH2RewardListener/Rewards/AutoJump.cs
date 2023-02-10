@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace KH2RewardListener.Rewards
 {
-    public class AutoAttack
+    public class AutoJump
     {
         static Mem mem = new Mem();
         static string process = "KINGDOM HEARTS II FINAL MIX";
@@ -18,7 +18,7 @@ namespace KH2RewardListener.Rewards
         public static void DoAction()
         {
             GetPID();
-            string rewardjson = File.ReadAllText("Rewards/AutoAttack.json");
+            string rewardjson = File.ReadAllText("Rewards/AutoJump.json");
             dynamic reward = JsonConvert.DeserializeObject(rewardjson);
 
             string chatmessage = reward["Reward"]["Message"];
@@ -40,11 +40,11 @@ namespace KH2RewardListener.Rewards
                         Thread.Sleep(1000);
                         continue;
                     }
-                    mem.WriteMemory($"{process}.exe+0x2A5A096", "byte", "0x01");
+                    mem.WriteMemory($"{process}.exe+3D484E", "bytes", "0x90 0x90");
                     Thread.Sleep(1000);
                     counter--;
                 }
-                mem.WriteMemory($"{process}.exe+0x2A5A096", "byte", "0x00");
+                mem.WriteMemory($"{process}.exe+3D484E", "bytes", "0x74 0x2A");
                 MainForm.client.SendMessage(MainForm.channel, endmessage);
             }).Start();
         }

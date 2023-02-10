@@ -29,6 +29,15 @@ namespace KH2RewardListener.Rewards
 
             int counter = 1;
 
+            int start = int.Parse(rangestart_get);
+            int end = int.Parse(rangeend_get) + 1;
+
+            int value = random.Next(1, 15);
+            var item = Consumables.GetConsumable(value);
+            int amount = random.Next(start, end);
+
+            MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Item]", item[0]).Replace("[Amount]", $"{amount}"));
+
             new Thread(() =>
             {
                 while (counter > 0)
@@ -42,15 +51,6 @@ namespace KH2RewardListener.Rewards
                         Thread.Sleep(1000);
                         continue;
                     }
-
-                    int start = int.Parse(rangestart_get);
-                    int end = int.Parse(rangeend_get) + 1;
-
-                    int value = random.Next(1, 15);
-                    var item = Consumables.GetConsumable(value);
-                    int amount = random.Next(start, end);
-
-                    MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Item]", item[0]).Replace("[Amount]", $"{amount}"));
                     var currentamount = mem.ReadByte($"{process}.exe+{item[1]}");
                     var count = currentamount + amount;
                     if (count > 255)

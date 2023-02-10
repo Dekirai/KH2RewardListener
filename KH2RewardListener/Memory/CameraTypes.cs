@@ -8,7 +8,7 @@ namespace KH2RewardListener.Memory
 {
     public class CameraTypes
     {
-        public static async Task<string[]> GetCameraType(int cameratype)
+        public static string[] GetCameraType(int cameratype)
         {
             List<string> getcameratype = new List<string>();
 

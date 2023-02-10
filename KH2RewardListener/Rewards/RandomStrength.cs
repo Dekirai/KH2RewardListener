@@ -34,7 +34,6 @@ namespace KH2RewardListener.Rewards
                 value = 255;
 
             MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Duration]", counter.ToString()).Replace("[Amount]", value.ToString()));
-
             new Thread(() =>
             {
                 while (counter > 0)

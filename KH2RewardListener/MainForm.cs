@@ -7,19 +7,15 @@ using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
 using System.Diagnostics;
 using KH2RewardListener.Logger;
-using KHMemLibrary;
 using Memory;
-using KH2RewardListener.UserControls;
 using KH2RewardListener.Properties;
 using KH2RewardListener.Rewards;
-using Newtonsoft.Json;
 
 namespace KH2RewardListener
 {
     public partial class MainForm : Form
     {
         public static TwitchPubSub PubSub;
-        public static KH2FM kh2 = new KH2FM();
         public static Mem mem = new Mem();
         public static TwitchClient client = new TwitchClient();
         public static ITwitchAPI API;
@@ -102,6 +98,15 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.AutoAttack:
                         AutoAttack.DoAction();
                         break;
+                    case var value when value == RewardManager.AutoJump:
+                        AutoJump.DoAction();
+                        break;
+                    case var value when value == RewardManager.BlindSight:
+                        BlindSight.DoAction();
+                        break;
+                    case var value when value == RewardManager.BlockPause:
+                        BlockPause.DoAction();
+                        break;
                     case var value when value == RewardManager.DriveAnti:
                         DriveAnti.DoAction();
                         break;
@@ -126,11 +131,41 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.EmptyMagic:
                         EmptyMagic.DoAction();
                         break;
+                    case var value when value == RewardManager.FieldOfView:
+                        FieldOfView.DoAction();
+                        break;
+                    case var value when value == RewardManager.Flashbang:
+                        Flashbang.DoAction();
+                        break;
+                    case var value when value == RewardManager.GameSpeed:
+                        GameSpeed.DoAction();
+                        break;
+                    case var value when value == RewardManager.InvisibleModels:
+                        InvisibleModels.DoAction();
+                        break;
+                    case var value when value == RewardManager.MovementSpeed:
+                        MovementSpeed.DoAction();
+                        break;
+                    case var value when value == RewardManager.NoAttack:
+                        NoAttack.DoAction();
+                        break;
+                    case var value when value == RewardManager.NoDrive:
+                        NoDrive.DoAction();
+                        break;
+                    case var value when value == RewardManager.NoItems:
+                        NoItems.DoAction();
+                        break;
+                    case var value when value == RewardManager.NoMagic:
+                        NoMagic.DoAction();
+                        break;
                     case var value when value == RewardManager.OneHP:
                         OneHP.DoAction();
                         break;
+                    case var value when value == RewardManager.PhoneMode:
+                        PhoneMode.DoAction();
+                        break;
                     case var value when value == RewardManager.RandomCamera:
-                        OneHP.DoAction();
+                        RandomCamera.DoAction();
                         break;
                     case var value when value == RewardManager.RandomConsumable:
                         RandomConsumable.DoAction();

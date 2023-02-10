@@ -1,9 +1,10 @@
-﻿using Memory;
+﻿using KH2RewardListener.Memory;
+using Memory;
 using Newtonsoft.Json;
 
 namespace KH2RewardListener.Rewards
 {
-    public class AutoAttack
+    public class RandomCamera
     {
         static Mem mem = new Mem();
         static string process = "KINGDOM HEARTS II FINAL MIX";
@@ -18,7 +19,8 @@ namespace KH2RewardListener.Rewards
         public static void DoAction()
         {
             GetPID();
-            string rewardjson = File.ReadAllText("Rewards/AutoAttack.json");
+            Random random = new Random();
+            string rewardjson = File.ReadAllText("Rewards/RandomCamera.json");
             dynamic reward = JsonConvert.DeserializeObject(rewardjson);
 
             string chatmessage = reward["Reward"]["Message"];
@@ -26,7 +28,11 @@ namespace KH2RewardListener.Rewards
             string duration = reward["Reward"]["Duration"];
             int counter = int.Parse(duration);
 
-            MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Duration]", counter.ToString()));
+            int value = random.Next(1, 4);
+            var item = CameraTypes.GetCameraType(value);
+
+            MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Duration]", counter.ToString()).Replace("[Type]", item[0]));
+
             new Thread(() =>
             {
                 while (counter > 0)
@@ -40,11 +46,12 @@ namespace KH2RewardListener.Rewards
                         Thread.Sleep(1000);
                         continue;
                     }
-                    mem.WriteMemory($"{process}.exe+0x2A5A096", "byte", "0x01");
+
+                    mem.WriteMemory($"{process}.exe+0x716A58", "byte", $"{item[1]}");
                     Thread.Sleep(1000);
                     counter--;
                 }
-                mem.WriteMemory($"{process}.exe+0x2A5A096", "byte", "0x00");
+                mem.WriteMemory($"{process}.exe+0x716A58", "byte", "0");
                 MainForm.client.SendMessage(MainForm.channel, endmessage);
             }).Start();
         }

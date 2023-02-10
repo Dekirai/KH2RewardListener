@@ -25,6 +25,8 @@ namespace KH2RewardListener.Rewards
 
             int counter = 1;
             int _isForm = mem.ReadByte($"{process}.exe+9AA5D4");
+
+            MainForm.client.SendMessage(MainForm.channel, chatmessage);
             if (_isForm > 0)
                 MainForm.client.SendMessage(MainForm.channel, "The reward has been added to the queue because the player is already in a form!");
 
@@ -45,17 +47,19 @@ namespace KH2RewardListener.Rewards
                     var keyblade = mem.ReadByte($"{process}.exe+9AA44C");
                     if (keyblade == 0)
                         mem.WriteMemory($"{process}.exe+9AA44C", "bytes", "0x29 0x00");
-                    MainForm.client.SendMessage(MainForm.channel, chatmessage);
                     Thread.Sleep(500);
-                    var CharCheck = mem.ReadByte($"{process}.exe+2A22A00");
-                    if (CharCheck != 0x54)
+                    var CharCheck = mem.Read2Byte($"{process}.exe+2A22A00");
+                    if (CharCheck == 0x0054 || CharCheck == 0xB502 || CharCheck == 0x0656 || CharCheck == 0x0657 || CharCheck == 0x0955)
+                    {
+                        mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x04 0x00 0x04 0x00");
+                        Thread.Sleep(400);
+                        mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x00 0x00 0x00 0x00");
+                    }
+                    else
                     {
                         MainForm.client.SendMessage(MainForm.channel, "The player needs to be Sora for that.");
                         return;
                     }
-                    mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x04 0x00 0x04 0x00");
-                    Thread.Sleep(400);
-                    mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x00 0x00 0x00 0x00");
                     counter--;
                 }
             }).Start();
