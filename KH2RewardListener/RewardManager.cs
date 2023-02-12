@@ -47,137 +47,144 @@ namespace KH2RewardListener
 
         public static void GetRewardNames()
         {
-            string autoattack_json = File.ReadAllText("Rewards/AutoAttack.json");
-            dynamic autoattack_dyn = JsonConvert.DeserializeObject(autoattack_json);
-            AutoAttack = autoattack_dyn["Reward"]["ID"];
+            try
+            {
+                string autoattack_json = File.ReadAllText("Rewards/AutoAttack.json");
+                dynamic autoattack_dyn = JsonConvert.DeserializeObject(autoattack_json);
+                AutoAttack = autoattack_dyn["Reward"]["ID"];
 
-            string autojump_json = File.ReadAllText("Rewards/AutoJump.json");
-            dynamic autojump_dyn = JsonConvert.DeserializeObject(autojump_json);
-            AutoJump = autojump_dyn["Reward"]["ID"];
+                string autojump_json = File.ReadAllText("Rewards/AutoJump.json");
+                dynamic autojump_dyn = JsonConvert.DeserializeObject(autojump_json);
+                AutoJump = autojump_dyn["Reward"]["ID"];
 
-            string blindsight_json = File.ReadAllText("Rewards/BlindSight.json");
-            dynamic blindsight_dyn = JsonConvert.DeserializeObject(blindsight_json);
-            BlindSight = blindsight_dyn["Reward"]["ID"];
+                string blindsight_json = File.ReadAllText("Rewards/BlindSight.json");
+                dynamic blindsight_dyn = JsonConvert.DeserializeObject(blindsight_json);
+                BlindSight = blindsight_dyn["Reward"]["ID"];
 
-            string blockpause_json = File.ReadAllText("Rewards/BlockPause.json");
-            dynamic blockpause_dyn = JsonConvert.DeserializeObject(blockpause_json);
-            BlockPause = blockpause_dyn["Reward"]["ID"];
+                string blockpause_json = File.ReadAllText("Rewards/BlockPause.json");
+                dynamic blockpause_dyn = JsonConvert.DeserializeObject(blockpause_json);
+                BlockPause = blockpause_dyn["Reward"]["ID"];
 
-            string driveanti_json = File.ReadAllText("Rewards/DriveAnti.json");
-            dynamic driveanti_dyn = JsonConvert.DeserializeObject(driveanti_json);
-            DriveAnti = driveanti_dyn["Reward"]["ID"];
+                string driveanti_json = File.ReadAllText("Rewards/DriveAnti.json");
+                dynamic driveanti_dyn = JsonConvert.DeserializeObject(driveanti_json);
+                DriveAnti = driveanti_dyn["Reward"]["ID"];
 
-            string drivefinal_json = File.ReadAllText("Rewards/DriveFinal.json");
-            dynamic drivefinal_dyn = JsonConvert.DeserializeObject(drivefinal_json);
-            DriveFinal = drivefinal_dyn["Reward"]["ID"];
+                string drivefinal_json = File.ReadAllText("Rewards/DriveFinal.json");
+                dynamic drivefinal_dyn = JsonConvert.DeserializeObject(drivefinal_json);
+                DriveFinal = drivefinal_dyn["Reward"]["ID"];
 
-            string drivelimit_json = File.ReadAllText("Rewards/DriveLimit.json");
-            dynamic drivelimit_dyn = JsonConvert.DeserializeObject(drivelimit_json);
-            DriveLimit = drivelimit_dyn["Reward"]["ID"];
+                string drivelimit_json = File.ReadAllText("Rewards/DriveLimit.json");
+                dynamic drivelimit_dyn = JsonConvert.DeserializeObject(drivelimit_json);
+                DriveLimit = drivelimit_dyn["Reward"]["ID"];
 
-            string drivemaster_json = File.ReadAllText("Rewards/DriveMaster.json");
-            dynamic drivemaster_dyn = JsonConvert.DeserializeObject(drivemaster_json);
-            DriveMaster = drivemaster_dyn["Reward"]["ID"];
+                string drivemaster_json = File.ReadAllText("Rewards/DriveMaster.json");
+                dynamic drivemaster_dyn = JsonConvert.DeserializeObject(drivemaster_json);
+                DriveMaster = drivemaster_dyn["Reward"]["ID"];
 
-            string drivevalor_json = File.ReadAllText("Rewards/DriveValor.json");
-            dynamic drivevalor_dyn = JsonConvert.DeserializeObject(drivevalor_json);
-            DriveValor = drivevalor_dyn["Reward"]["ID"];
+                string drivevalor_json = File.ReadAllText("Rewards/DriveValor.json");
+                dynamic drivevalor_dyn = JsonConvert.DeserializeObject(drivevalor_json);
+                DriveValor = drivevalor_dyn["Reward"]["ID"];
 
-            string drivewisdom_json = File.ReadAllText("Rewards/DriveWisdom.json");
-            dynamic drivewisdom_dyn = JsonConvert.DeserializeObject(drivewisdom_json);
-            DriveWisdom = drivewisdom_dyn["Reward"]["ID"];
+                string drivewisdom_json = File.ReadAllText("Rewards/DriveWisdom.json");
+                dynamic drivewisdom_dyn = JsonConvert.DeserializeObject(drivewisdom_json);
+                DriveWisdom = drivewisdom_dyn["Reward"]["ID"];
 
-            string emptydrive_json = File.ReadAllText("Rewards/EmptyDrive.json");
-            dynamic emptydrive_dyn = JsonConvert.DeserializeObject(emptydrive_json);
-            EmptyDrive = emptydrive_dyn["Reward"]["ID"];
+                string emptydrive_json = File.ReadAllText("Rewards/EmptyDrive.json");
+                dynamic emptydrive_dyn = JsonConvert.DeserializeObject(emptydrive_json);
+                EmptyDrive = emptydrive_dyn["Reward"]["ID"];
 
-            string emptymagic_json = File.ReadAllText("Rewards/EmptyMagic.json");
-            dynamic emptymagic_dyn = JsonConvert.DeserializeObject(emptymagic_json);
-            EmptyMagic = emptymagic_dyn["Reward"]["ID"];
+                string emptymagic_json = File.ReadAllText("Rewards/EmptyMagic.json");
+                dynamic emptymagic_dyn = JsonConvert.DeserializeObject(emptymagic_json);
+                EmptyMagic = emptymagic_dyn["Reward"]["ID"];
 
-            string fieldofview_json = File.ReadAllText("Rewards/FieldOfView.json");
-            dynamic fieldofview_dyn = JsonConvert.DeserializeObject(fieldofview_json);
-            FieldOfView = fieldofview_dyn["Reward"]["ID"];
+                string fieldofview_json = File.ReadAllText("Rewards/FieldOfView.json");
+                dynamic fieldofview_dyn = JsonConvert.DeserializeObject(fieldofview_json);
+                FieldOfView = fieldofview_dyn["Reward"]["ID"];
 
-            string flashbang_json = File.ReadAllText("Rewards/Flashbang.json");
-            dynamic flashbang_dyn = JsonConvert.DeserializeObject(flashbang_json);
-            Flashbang = flashbang_dyn["Reward"]["ID"];
+                string flashbang_json = File.ReadAllText("Rewards/Flashbang.json");
+                dynamic flashbang_dyn = JsonConvert.DeserializeObject(flashbang_json);
+                Flashbang = flashbang_dyn["Reward"]["ID"];
 
-            string gamespeed_json = File.ReadAllText("Rewards/GameSpeed.json");
-            dynamic gamespeed_dyn = JsonConvert.DeserializeObject(gamespeed_json);
-            GameSpeed = gamespeed_dyn["Reward"]["ID"];
+                string gamespeed_json = File.ReadAllText("Rewards/GameSpeed.json");
+                dynamic gamespeed_dyn = JsonConvert.DeserializeObject(gamespeed_json);
+                GameSpeed = gamespeed_dyn["Reward"]["ID"];
 
-            string invisiblemodels_json = File.ReadAllText("Rewards/InvisibleModels.json");
-            dynamic invisiblemodels_dyn = JsonConvert.DeserializeObject(invisiblemodels_json);
-            InvisibleModels = invisiblemodels_dyn["Reward"]["ID"];
+                string invisiblemodels_json = File.ReadAllText("Rewards/InvisibleModels.json");
+                dynamic invisiblemodels_dyn = JsonConvert.DeserializeObject(invisiblemodels_json);
+                InvisibleModels = invisiblemodels_dyn["Reward"]["ID"];
 
-            string movementspeed_json = File.ReadAllText("Rewards/MovementSpeed.json");
-            dynamic movementspeed_dyn = JsonConvert.DeserializeObject(movementspeed_json);
-            MovementSpeed = movementspeed_dyn["Reward"]["ID"];
+                string movementspeed_json = File.ReadAllText("Rewards/MovementSpeed.json");
+                dynamic movementspeed_dyn = JsonConvert.DeserializeObject(movementspeed_json);
+                MovementSpeed = movementspeed_dyn["Reward"]["ID"];
 
-            string noattack_json = File.ReadAllText("Rewards/NoAttack.json");
-            dynamic noattack_dyn = JsonConvert.DeserializeObject(noattack_json);
-            NoAttack = noattack_dyn["Reward"]["ID"];
+                string noattack_json = File.ReadAllText("Rewards/NoAttack.json");
+                dynamic noattack_dyn = JsonConvert.DeserializeObject(noattack_json);
+                NoAttack = noattack_dyn["Reward"]["ID"];
 
-            string nodrive_json = File.ReadAllText("Rewards/NoDrive.json");
-            dynamic nodrive_dyn = JsonConvert.DeserializeObject(nodrive_json);
-            NoDrive = nodrive_dyn["Reward"]["ID"];
+                string nodrive_json = File.ReadAllText("Rewards/NoDrive.json");
+                dynamic nodrive_dyn = JsonConvert.DeserializeObject(nodrive_json);
+                NoDrive = nodrive_dyn["Reward"]["ID"];
 
-            string noitems_json = File.ReadAllText("Rewards/NoItems.json");
-            dynamic noitems_dyn = JsonConvert.DeserializeObject(noitems_json);
-            NoItems = noitems_dyn["Reward"]["ID"];
+                string noitems_json = File.ReadAllText("Rewards/NoItems.json");
+                dynamic noitems_dyn = JsonConvert.DeserializeObject(noitems_json);
+                NoItems = noitems_dyn["Reward"]["ID"];
 
-            string nomagic_json = File.ReadAllText("Rewards/NoMagic.json");
-            dynamic nomagic_dyn = JsonConvert.DeserializeObject(nomagic_json);
-            NoMagic = nomagic_dyn["Reward"]["ID"];
+                string nomagic_json = File.ReadAllText("Rewards/NoMagic.json");
+                dynamic nomagic_dyn = JsonConvert.DeserializeObject(nomagic_json);
+                NoMagic = nomagic_dyn["Reward"]["ID"];
 
-            string onehp_json = File.ReadAllText("Rewards/OneHP.json");
-            dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
-            OneHP = onehp_dyn["Reward"]["ID"];
+                string onehp_json = File.ReadAllText("Rewards/OneHP.json");
+                dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
+                OneHP = onehp_dyn["Reward"]["ID"];
 
-            string phonemode_json = File.ReadAllText("Rewards/PhoneMode.json");
-            dynamic phonemode_dyn = JsonConvert.DeserializeObject(phonemode_json);
-            PhoneMode = phonemode_dyn["Reward"]["ID"];
+                string phonemode_json = File.ReadAllText("Rewards/PhoneMode.json");
+                dynamic phonemode_dyn = JsonConvert.DeserializeObject(phonemode_json);
+                PhoneMode = phonemode_dyn["Reward"]["ID"];
 
-            string randomcamera_json = File.ReadAllText("Rewards/RandomCamera.json");
-            dynamic randomcamera_dyn = JsonConvert.DeserializeObject(randomcamera_json);
-            RandomCamera = randomcamera_dyn["Reward"]["ID"];
+                string randomcamera_json = File.ReadAllText("Rewards/RandomCamera.json");
+                dynamic randomcamera_dyn = JsonConvert.DeserializeObject(randomcamera_json);
+                RandomCamera = randomcamera_dyn["Reward"]["ID"];
 
-            string randomconsumable_json = File.ReadAllText("Rewards/RandomConsumable.json");
-            dynamic randomconsumable_dyn = JsonConvert.DeserializeObject(randomconsumable_json);
-            RandomConsumable = randomconsumable_dyn["Reward"]["ID"];
+                string randomconsumable_json = File.ReadAllText("Rewards/RandomConsumable.json");
+                dynamic randomconsumable_dyn = JsonConvert.DeserializeObject(randomconsumable_json);
+                RandomConsumable = randomconsumable_dyn["Reward"]["ID"];
 
-            string randomdefense_json = File.ReadAllText("Rewards/RandomDefense.json");
-            dynamic randomdefense_dyn = JsonConvert.DeserializeObject(randomdefense_json);
-            RandomDefense = randomdefense_dyn["Reward"]["ID"];
+                string randomdefense_json = File.ReadAllText("Rewards/RandomDefense.json");
+                dynamic randomdefense_dyn = JsonConvert.DeserializeObject(randomdefense_json);
+                RandomDefense = randomdefense_dyn["Reward"]["ID"];
 
-            string randommagic_json = File.ReadAllText("Rewards/RandomMagic.json");
-            dynamic randommagic_dyn = JsonConvert.DeserializeObject(randommagic_json);
-            RandomMagic = randommagic_dyn["Reward"]["ID"];
+                string randommagic_json = File.ReadAllText("Rewards/RandomMagic.json");
+                dynamic randommagic_dyn = JsonConvert.DeserializeObject(randommagic_json);
+                RandomMagic = randommagic_dyn["Reward"]["ID"];
 
-            string randomstrength_json = File.ReadAllText("Rewards/RandomStrength.json");
-            dynamic randomstrength_dyn = JsonConvert.DeserializeObject(randomstrength_json);
-            RandomStrength = randomstrength_dyn["Reward"]["ID"];
+                string randomstrength_json = File.ReadAllText("Rewards/RandomStrength.json");
+                dynamic randomstrength_dyn = JsonConvert.DeserializeObject(randomstrength_json);
+                RandomStrength = randomstrength_dyn["Reward"]["ID"];
 
-            string refilldrive_json = File.ReadAllText("Rewards/RefillDrive.json");
-            dynamic refilldrive_dyn = JsonConvert.DeserializeObject(refilldrive_json);
-            RefillDrive = refilldrive_dyn["Reward"]["ID"];
+                string refilldrive_json = File.ReadAllText("Rewards/RefillDrive.json");
+                dynamic refilldrive_dyn = JsonConvert.DeserializeObject(refilldrive_json);
+                RefillDrive = refilldrive_dyn["Reward"]["ID"];
 
-            string refillformduration_json = File.ReadAllText("Rewards/RefillFormDuration.json");
-            dynamic refillformduration_dyn = JsonConvert.DeserializeObject(refillformduration_json);
-            RefillFormDuration = refillformduration_dyn["Reward"]["ID"];
+                string refillformduration_json = File.ReadAllText("Rewards/RefillFormDuration.json");
+                dynamic refillformduration_dyn = JsonConvert.DeserializeObject(refillformduration_json);
+                RefillFormDuration = refillformduration_dyn["Reward"]["ID"];
 
-            string refillhp_json = File.ReadAllText("Rewards/RefillHP.json");
-            dynamic refillhp_dyn = JsonConvert.DeserializeObject(refillhp_json);
-            RefillHP = refillhp_dyn["Reward"]["ID"];
+                string refillhp_json = File.ReadAllText("Rewards/RefillHP.json");
+                dynamic refillhp_dyn = JsonConvert.DeserializeObject(refillhp_json);
+                RefillHP = refillhp_dyn["Reward"]["ID"];
 
-            string refillmp_json = File.ReadAllText("Rewards/RefillMP.json");
-            dynamic refillmp_dyn = JsonConvert.DeserializeObject(refillmp_json);
-            RefillMP = refillmp_dyn["Reward"]["ID"];
+                string refillmp_json = File.ReadAllText("Rewards/RefillMP.json");
+                dynamic refillmp_dyn = JsonConvert.DeserializeObject(refillmp_json);
+                RefillMP = refillmp_dyn["Reward"]["ID"];
 
-            string softreset_json = File.ReadAllText("Rewards/SoftReset.json");
-            dynamic softreset_dyn = JsonConvert.DeserializeObject(softreset_json);
-            SoftReset = softreset_dyn["Reward"]["ID"];
+                string softreset_json = File.ReadAllText("Rewards/SoftReset.json");
+                dynamic softreset_dyn = JsonConvert.DeserializeObject(softreset_json);
+                SoftReset = softreset_dyn["Reward"]["ID"];
+            }
+            catch
+            {
+                MessageBox.Show("There is an error in one of your .json files.\nPlease go through the file you believe has an error and fix it.\n\nDO NOT CHANGE THE FILE NAME!");
+            }
         }
     }
 }
