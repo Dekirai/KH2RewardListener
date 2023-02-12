@@ -82,8 +82,24 @@ namespace KH2RewardListener
         private void ListenToRewards(string channelId)
         {
             PubSub.OnRewardRedeemed += PubSub_OnRewardRedeemed;
+            PubSub.OnCustomRewardCreated += PubSub_OnCustomRewardCreated;
+            PubSub.OnCustomRewardUpdated += PubSub_OnCustomRewardUpdated;
             PubSub.ListenToRewards(channelId);
             PubSub.ListenToChannelPoints(channelId);
+        }
+
+        [Obsolete]
+        private async void PubSub_OnCustomRewardCreated(object sender, OnCustomRewardCreatedArgs e)
+        {
+            _logger.Information("A reward has been created: " + e.RewardTitle);
+            _logger.Information("Reward ID: " + e.RewardId);
+        }
+
+        [Obsolete]
+        private async void PubSub_OnCustomRewardUpdated(object sender, OnCustomRewardUpdatedArgs e)
+        {
+            _logger.Information("A reward has been updated: " + e.RewardTitle);
+            _logger.Information("Reward ID: " + e.RewardId);
         }
 
         [Obsolete]
@@ -93,7 +109,7 @@ namespace KH2RewardListener
             RewardManager.GetRewardNames();
             if (e.Status != "ACTION_TAKEN")
             {
-                switch (e.RewardTitle)
+                switch (e.RewardId.ToString())
                 {
                     case var value when value == RewardManager.AutoAttack:
                         AutoAttack.DoAction();
@@ -236,7 +252,9 @@ namespace KH2RewardListener
             {
                 RichTextBox richTextBox = rtb_Log;
                 richTextBox.Text = richTextBox.Text + e.Text + "\n";
-                rtb_Log.ScrollToCaret();
+                richTextBox.Focus();
+                richTextBox.Select(richTextBox.TextLength, 0);
+                richTextBox.ScrollToCaret();
             }));
         }
 
