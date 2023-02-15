@@ -29,8 +29,9 @@ namespace KH2RewardListener.Rewards
             MainForm.client.SendMessage(MainForm.channel, chatmessage);
             int _isForm = mem.ReadByte($"{process}.exe+9AA5D4");
             int _isSummon = mem.ReadByte($"{process}.exe+9AA5D5");
-            if (_isForm > 0 || _isSummon > 0)
-                MainForm.client.SendMessage(MainForm.channel, "The reward has been added to the queue because the player is already in a form or summon!");
+            int _isLimit = mem.ReadByte($"{process}.exe+2A0E080");
+            if (_isForm > 0 || _isSummon > 0 || _isLimit > 0)
+                MainForm.client.SendMessage(MainForm.channel, "The reward has been added to the queue because the player is either in a form, summon or limit!");
 
             new Thread(() =>
             {
@@ -42,7 +43,7 @@ namespace KH2RewardListener.Rewards
                     int _cantMove = mem.ReadByte($"{process}.exe+2A148E8");
                     int _isMapLoaded = mem.ReadByte($"{process}.exe+9B80D0");
                     int _isWorldMap = mem.ReadByte($"{process}.exe+714DB8");
-                    int _isLimit = mem.ReadByte($"{process}.exe+2A0DC08");
+                    int _isLimit = mem.ReadByte($"{process}.exe+2A0E080");
                     if (_isPaused > 0 || _isForm > 0 || _isSummon > 0 || _cantMove > 0 || _isWorldMap == 15 || _isMapLoaded == 0 || _isLimit > 0)
                     {
                         Thread.Sleep(3500);
