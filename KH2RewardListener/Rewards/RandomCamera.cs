@@ -47,10 +47,11 @@ namespace KH2RewardListener.Rewards
                         continue;
                     }
 
-                    mem.WriteMemory($"{process}.exe+0x716A58", "byte", $"{item[1]}");
+                    mem.FreezeValue($"{process}.exe+0x716A58", "byte", $"{item[1]}");
                     Thread.Sleep(1000);
                     counter--;
                 }
+                mem.UnfreezeValue($"{process}.exe+0x716A58");
                 mem.WriteMemory($"{process}.exe+0x716A58", "byte", "0");
                 MainForm.client.SendMessage(MainForm.channel, endmessage);
             }).Start();

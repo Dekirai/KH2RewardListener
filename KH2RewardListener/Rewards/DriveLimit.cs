@@ -1,4 +1,5 @@
-﻿using Memory;
+﻿using KH2RewardListener.Memory;
+using Memory;
 using Newtonsoft.Json;
 
 namespace KH2RewardListener.Rewards
@@ -24,11 +25,12 @@ namespace KH2RewardListener.Rewards
             string chatmessage = reward["Reward"]["Message"];
 
             int counter = 1;
-            int _isForm = mem.ReadByte($"{process}.exe+9AA5D4");
 
             MainForm.client.SendMessage(MainForm.channel, chatmessage);
-            if (_isForm > 0)
-                MainForm.client.SendMessage(MainForm.channel, "The reward has been added to the queue because the player is already in a form!");
+            int _isForm = mem.ReadByte($"{process}.exe+9AA5D4");
+            int _isSummon = mem.ReadByte($"{process}.exe+9AA5D5");
+            if (_isForm > 0 || _isSummon > 0)
+                MainForm.client.SendMessage(MainForm.channel, "The reward has been added to the queue because the player is already in a form or summon!");
 
             new Thread(() =>
             {
@@ -36,17 +38,19 @@ namespace KH2RewardListener.Rewards
                 {
                     int _isPaused = mem.ReadByte($"{process}.exe+AB9054");
                     int _isForm = mem.ReadByte($"{process}.exe+9AA5D4");
+                    int _isSummon = mem.ReadByte($"{process}.exe+9AA5D5");
                     int _cantMove = mem.ReadByte($"{process}.exe+2A148E8");
                     int _isMapLoaded = mem.ReadByte($"{process}.exe+9B80D0");
                     int _isWorldMap = mem.ReadByte($"{process}.exe+714DB8");
-                    if (_isPaused > 0 || _isForm > 0 || _cantMove > 0 || _isWorldMap == 15 || _isMapLoaded == 0)
+                    int _isLimit = mem.ReadByte($"{process}.exe+2A0DC08");
+                    if (_isPaused > 0 || _isForm > 0 || _isSummon > 0 || _cantMove > 0 || _isWorldMap == 15 || _isMapLoaded == 0 || _isLimit > 0)
                     {
                         Thread.Sleep(3500);
                         continue;
                     }
                     Thread.Sleep(500);
                     var CharCheck = mem.Read2Byte($"{process}.exe+2A22A00");
-                    if (CharCheck == 0x0054 || CharCheck == 0xB502 || CharCheck == 0x0656 || CharCheck == 0x0657 || CharCheck == 0x0955)
+                    if (CharCheck == UCMs.Sora || CharCheck == UCMs.Sora_SP || CharCheck == UCMs.Sora_XMAS || CharCheck == UCMs.Sora_XMAS2 || CharCheck == UCMs.Sora_TR || CharCheck == UCMs.Sora_Halloween)
                     {
                         mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x04 0x00 0x03 0x00");
                         Thread.Sleep(400);

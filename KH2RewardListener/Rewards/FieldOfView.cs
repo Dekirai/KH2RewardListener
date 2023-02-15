@@ -39,10 +39,11 @@ namespace KH2RewardListener.Rewards
                         Thread.Sleep(1000);
                         continue;
                     }
-                    mem.WriteMemory($"{process}.exe+47435D", "float", "5");
+                    mem.FreezeValue($"{process}.exe+47435D", "float", "5");
                     Thread.Sleep(1000);
                     counter--;
                 }
+                mem.UnfreezeValue($"{process}.exe+47435D");
                 mem.WriteMemory($"{process}.exe+47435D", "float", "1");
                 MainForm.client.SendMessage(MainForm.channel, endmessage);
             }).Start();
