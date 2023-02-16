@@ -58,10 +58,10 @@ namespace KH2RewardListener.Rewards
                     if (CharCheck == UCMs.Sora || CharCheck == UCMs.Sora_SP || CharCheck == UCMs.Sora_XMAS || CharCheck == UCMs.Sora_XMAS2 || CharCheck == UCMs.Sora_TR || CharCheck == UCMs.Sora_Halloween)
                     {
                         mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x04 0x00 0x05 0x00");
-                        Thread.Sleep(400);
+                        Thread.Sleep(69);
                         mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x00 0x00 0x00 0x00");
-                        Thread.Sleep(1000);
-                        BlockRevert();
+                        //Thread.Sleep(1000);
+                        //BlockRevert();
                     }
                     else
                     {
