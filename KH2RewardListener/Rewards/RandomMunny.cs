@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace KH2RewardListener.Rewards
 {
-    public class RandomConsumable
+    public class RandomMunny
     {
         static Mem mem = new Mem();
         static string process = "KINGDOM HEARTS II FINAL MIX";
@@ -20,23 +20,22 @@ namespace KH2RewardListener.Rewards
         {
             GetPID();
             Random random = new Random();
-            string rewardjson = File.ReadAllText("Rewards/RandomConsumable.json");
+            string rewardjson = File.ReadAllText("Rewards/RandomMunny.json");
             dynamic reward = JsonConvert.DeserializeObject(rewardjson);
 
             string chatmessage = reward["Reward"]["Message"];
-            string rangestart_get = reward["Reward"]["RangeStart"];
-            string rangeend_get = reward["Reward"]["RangeEnd"];
+            //string rangestart_get = reward["Reward"]["RangeStart"];
+            //string rangeend_get = reward["Reward"]["RangeEnd"];
 
             int counter = 1;
 
-            int start = int.Parse(rangestart_get);
-            int end = int.Parse(rangeend_get) + 1;
+            //int start = int.Parse(rangestart_get);
+            //int end = int.Parse(rangeend_get) + 1;
 
-            int value = random.Next(1, 15);
-            var item = Consumables.GetConsumable(value);
-            int amount = random.Next(start, end);
+            int value = random.Next(-500, 2000);
+            //int amount = random.Next(start, end);
 
-            MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Item]", item[0]).Replace("[Amount]", $"{amount}"));
+            MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Amount]", $"{value}"));
 
             new Thread(() =>
             {
@@ -51,11 +50,13 @@ namespace KH2RewardListener.Rewards
                         Thread.Sleep(1000);
                         continue;
                     }
-                    var currentamount = mem.ReadByte($"{process}.exe+{item[1]}");
-                    var count = currentamount + amount;
-                    if (count > 99)
-                        count = 99;
-                    mem.WriteMemory($"{process}.exe+{item[1]}", "byte", $"0x{count.ToString("X")}");
+                    var currentamount = mem.ReadInt($"{process}.exe+9A94F0");
+                    var count = currentamount + value;
+                    if (count > 999999)
+                        count = 999999;
+                    else if (count < 0)
+                        count = 0;
+                    mem.WriteMemory($"{process}.exe+9A94F0", "int", $"{count}");
                     counter--;
                 }
             }).Start();

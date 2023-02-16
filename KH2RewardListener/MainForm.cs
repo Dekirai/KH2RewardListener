@@ -20,6 +20,7 @@ namespace KH2RewardListener
         public static TwitchClient client = new TwitchClient();
         public static ITwitchAPI API;
         public static string channel = "";
+        public static string userinput = "";
         private readonly LogService _logger;
 
         public MainForm()
@@ -174,11 +175,18 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.NoMagic:
                         NoMagic.DoAction();
                         break;
+                    case var value when value == RewardManager.NoScan:
+                        NoScan.DoAction();
+                        break;
                     case var value when value == RewardManager.OneHP:
                         OneHP.DoAction();
                         break;
                     case var value when value == RewardManager.PhoneMode:
                         PhoneMode.DoAction();
+                        break;
+                    case var value when value == RewardManager.PlayerSize:
+                        userinput = e.Message.ToLower();
+                        PlayerSize.DoAction();
                         break;
                     case var value when value == RewardManager.RandomCamera:
                         RandomCamera.DoAction();
@@ -191,6 +199,9 @@ namespace KH2RewardListener
                         break;
                     case var value when value == RewardManager.RandomMagic:
                         RandomMagic.DoAction();
+                        break;
+                    case var value when value == RewardManager.RandomMunny:
+                        RandomMunny.DoAction();
                         break;
                     case var value when value == RewardManager.RandomStrength:
                         RandomStrength.DoAction();

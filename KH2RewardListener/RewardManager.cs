@@ -32,12 +32,15 @@ namespace KH2RewardListener
         public static string? NoDrive { get; set; }
         public static string? NoItems { get; set; }
         public static string? NoMagic { get; set; }
+        public static string? NoScan { get; set; }
         public static string? OneHP { get; set; }
         public static string? PhoneMode { get; set; }
+        public static string? PlayerSize { get; set; }
         public static string? RandomCamera { get; set; }
         public static string? RandomConsumable { get; set; }
         public static string? RandomDefense { get; set; }
         public static string? RandomMagic { get; set; }
+        public static string? RandomMunny { get; set; }
         public static string? RandomStrength { get; set; }
         public static string? RefillDrive { get; set; }
         public static string? RefillFormDuration { get; set; }
@@ -133,6 +136,10 @@ namespace KH2RewardListener
                 dynamic nomagic_dyn = JsonConvert.DeserializeObject(nomagic_json);
                 NoMagic = nomagic_dyn["Reward"]["ID"];
 
+                string noscan_json = File.ReadAllText("Rewards/NoScan.json");
+                dynamic noscan_dyn = JsonConvert.DeserializeObject(noscan_json);
+                NoScan = noscan_dyn["Reward"]["ID"];
+
                 string onehp_json = File.ReadAllText("Rewards/OneHP.json");
                 dynamic onehp_dyn = JsonConvert.DeserializeObject(onehp_json);
                 OneHP = onehp_dyn["Reward"]["ID"];
@@ -140,6 +147,10 @@ namespace KH2RewardListener
                 string phonemode_json = File.ReadAllText("Rewards/PhoneMode.json");
                 dynamic phonemode_dyn = JsonConvert.DeserializeObject(phonemode_json);
                 PhoneMode = phonemode_dyn["Reward"]["ID"];
+
+                string playersize_json = File.ReadAllText("Rewards/PlayerSize.json");
+                dynamic playersize_dyn = JsonConvert.DeserializeObject(playersize_json);
+                PlayerSize = playersize_dyn["Reward"]["ID"];
 
                 string randomcamera_json = File.ReadAllText("Rewards/RandomCamera.json");
                 dynamic randomcamera_dyn = JsonConvert.DeserializeObject(randomcamera_json);
@@ -156,6 +167,10 @@ namespace KH2RewardListener
                 string randommagic_json = File.ReadAllText("Rewards/RandomMagic.json");
                 dynamic randommagic_dyn = JsonConvert.DeserializeObject(randommagic_json);
                 RandomMagic = randommagic_dyn["Reward"]["ID"];
+
+                string randommunny_json = File.ReadAllText("Rewards/RandomMunny.json");
+                dynamic randommunny_dyn = JsonConvert.DeserializeObject(randommunny_json);
+                RandomMunny = randommunny_dyn["Reward"]["ID"];
 
                 string randomstrength_json = File.ReadAllText("Rewards/RandomStrength.json");
                 dynamic randomstrength_dyn = JsonConvert.DeserializeObject(randomstrength_json);
