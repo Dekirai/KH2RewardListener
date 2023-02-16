@@ -1,6 +1,7 @@
 ﻿using KH2RewardListener.Memory;
 using Memory;
 using Newtonsoft.Json;
+using System.Diagnostics.Metrics;
 
 namespace KH2RewardListener.Rewards
 {
@@ -57,8 +58,10 @@ namespace KH2RewardListener.Rewards
                     if (CharCheck == UCMs.Sora || CharCheck == UCMs.Sora_SP || CharCheck == UCMs.Sora_XMAS || CharCheck == UCMs.Sora_XMAS2 || CharCheck == UCMs.Sora_TR || CharCheck == UCMs.Sora_Halloween)
                     {
                         mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x04 0x00 0x05 0x00");
-                        Thread.Sleep(10);
+                        Thread.Sleep(400);
                         mem.WriteMemory($"{process}.exe+2A5A096", "bytes", "0x00 0x00 0x00 0x00");
+                        Thread.Sleep(1000);
+                        BlockRevert();
                     }
                     else
                     {
@@ -66,6 +69,31 @@ namespace KH2RewardListener.Rewards
                         return;
                     }
                     counter--;
+                }
+            }).Start();
+        }
+
+        private static void BlockRevert()
+        {
+
+            int counter = 1;
+
+            new Thread(() =>
+            {
+                while (counter > 0)
+                {
+                    float _driveRemaining = mem.ReadFloat($"{process}.exe+2A20E4C");
+                    int _isForm = mem.ReadByte($"{process}.exe+9AA5D4");
+                    if (_isForm > 0)
+                        mem.WriteMemory($"{process}.exe+2A5A186", "byte", "0x00");
+                    if (_driveRemaining > 0)
+                    {
+                        mem.WriteMemory($"{process}.exe+2A5A186", "byte", "0x00");
+                        Thread.Sleep(1000);
+                        continue;
+                    }
+                        mem.WriteMemory($"{process}.exe+2A5A186", "byte", "0x05");
+                        counter--;
                 }
             }).Start();
         }
