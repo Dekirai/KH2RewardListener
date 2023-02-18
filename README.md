@@ -24,11 +24,13 @@ You have full control over the settings of the rewards. You can name them yourse
  - Most rewards will stop when the player is in a cutscene, pause menu, world map, talking to NPCs, etc
  - Each reward has it's own .json file in the Rewards folder
  - You may experience crashes when forcing drive forms, but I keep trying to fix them
-
-## Preview
+ 
+## Media
 ![Image1](https://i.imgur.com/8UMhfJI.png)
 ![Image2](https://i.imgur.com/cUNM8s9.png)
-![Image3](https://i.imgur.com/DiKKLsT.png)
+![Image3](https://i.imgur.com/DiKKLsT.png)  
+
+ https://user-images.githubusercontent.com/20326375/219880767-a5a2081c-2e8b-4fac-9e92-cf4610293547.mp4
 
 ## Tutorial
 1. Open the program (KH2RewardListener.exe)
