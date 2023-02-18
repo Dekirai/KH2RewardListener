@@ -14,6 +14,7 @@ You have full control over the settings of the rewards. You can name them yourse
 ## Requirements
 
  - Latest version of Kingdom Hearts 1.5+2.5 HD ReMIX on Epic Games
+ - Windows 10+ x64
  - [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
 ## Packages
