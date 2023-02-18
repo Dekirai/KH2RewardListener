@@ -196,9 +196,9 @@ namespace KH2RewardListener
                 dynamic softreset_dyn = JsonConvert.DeserializeObject(softreset_json);
                 SoftReset = softreset_dyn["Reward"]["ID"];
             }
-            catch
+            catch (Exception ex) 
             {
-                MessageBox.Show("There is an error in one of your .json files.\nPlease go through the file you believe has an error and fix it.\n\nDO NOT CHANGE THE FILE NAME!");
+                MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

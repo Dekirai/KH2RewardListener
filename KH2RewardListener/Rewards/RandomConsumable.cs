@@ -55,6 +55,8 @@ namespace KH2RewardListener.Rewards
                     var count = currentamount + amount;
                     if (count > 99)
                         count = 99;
+                    if (count < 0)
+                        count = 0;
                     mem.WriteMemory($"{process}.exe+{item[1]}", "byte", $"0x{count.ToString("X")}");
                     counter--;
                 }
