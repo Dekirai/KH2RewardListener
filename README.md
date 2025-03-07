@@ -5,6 +5,9 @@
 
 Viewers can interact with your KH2 session by using Channel Points on Twitch!
 
+> [!CAUTION]  
+> KH2RewardListener is currently being updated for steam, there currently is no release yet that works for the steam version!
+
 ## What exactly is KH2RewardListener?
 KH2RewardListener is a program developed by Dekirai that allows users on Twitch to interact with your current Kingdom Hearts II Final Mix (PC) session using their Channel Points.  
 There are **over 30 rewards** (and more to come) that you can set up on your stream for viewers to use. 
