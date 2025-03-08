@@ -16,13 +16,12 @@ You have full control over the settings of the rewards. You can name them yourse
 
 ## Requirements
 
- - Latest version of Kingdom Hearts 1.5+2.5 HD ReMIX on Epic Games
+ - Latest version of Kingdom Hearts II on Steam
  - Windows 10+ x64
- - [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+ - [.NET 9 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
 
 ## Packages
 [TwitchLib](https://github.com/TwitchLib/TwitchLib) by TwitchLib  
-[Memory.dll](https://github.com/erfg12/memory.dll) by erfg12
 
 ## Information
  - Most rewards will stop when the player is in a cutscene, pause menu, world map, talking to NPCs, etc
@@ -61,3 +60,4 @@ You have full control over the settings of the rewards. You can name them yourse
 ## Credits and Thanks
  - WaterKH - For the [Re:Write](https://github.com/WaterKH/ReWrite) inspiration and some help
  - [NobodyDaxian](https://www.twitch.tv/nobodydaxian) - Many tests, suggestions for improvement and bug hunting
+ - [TopazTK](https://github.com/TopazTK) - For Hypervisor

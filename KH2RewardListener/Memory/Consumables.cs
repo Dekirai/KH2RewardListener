@@ -2,75 +2,26 @@
 {
     public class Consumables
     {
-        public static string[] GetConsumable(int consumable)
+        public static (string, int) GetConsumable(int consumable)
         {
-            List<string> getconsumable = new List<string>();
-
-
             switch (consumable)
             {
-                case 1:
-                    getconsumable.Add("Potion");
-                    getconsumable.Add("0x9AA630");
-                    break;
-                case 2:
-                    getconsumable.Add("Hi-Potion");
-                    getconsumable.Add("0x9AA631");
-                    break;
-                case 3:
-                    getconsumable.Add("Ether");
-                    getconsumable.Add("0x9AA632");
-                    break;
-                case 4:
-                    getconsumable.Add("Elixir");
-                    getconsumable.Add("0x9AA633");
-                    break;
-                case 5:
-                    getconsumable.Add("Mega-Potion");
-                    getconsumable.Add("0x9AA634");
-                    break;
-                case 6:
-                    getconsumable.Add("Mega-Ether");
-                    getconsumable.Add("0x9AA635");
-                    break;
-                case 7:
-                    getconsumable.Add("Megalixir");
-                    getconsumable.Add("0x9AA636");
-                    break;
-                case 8:
-                    getconsumable.Add("Tent");
-                    getconsumable.Add("0x9AA691");
-                    break;
-                case 9:
-                    getconsumable.Add("Drive Recovery");
-                    getconsumable.Add("0x9AA714");
-                    break;
-                case 10:
-                    getconsumable.Add("High Drive Recovery");
-                    getconsumable.Add("0x9AA715");
-                    break;
-                case 11:
-                    getconsumable.Add("Power Boost");
-                    getconsumable.Add("0x9AA716");
-                    break;
-                case 12:
-                    getconsumable.Add("Magic Boost");
-                    getconsumable.Add("0x9AA717");
-                    break;
-                case 13:
-                    getconsumable.Add("Defense Boost");
-                    getconsumable.Add("0x9AA718");
-                    break;
-                case 14:
-                    getconsumable.Add("AP Boost");
-                    getconsumable.Add("0x9AA719");
-                    break;
-                default:
-                    getconsumable.Add("Potion");
-                    getconsumable.Add("0x9AA630");
-                    break;
+                case 1: return ("Potion", 0x9ACE30 + 0x2800);
+                case 2: return ("Hi-Potion", 0x9AA631 + 0x2800);
+                case 3: return ("Ether", 0x9AA632 + 0x2800);
+                case 4: return ("Elixir", 0x9AA633 + 0x2800);
+                case 5: return ("Mega-Potion", 0x9AA634 + 0x2800);
+                case 6: return ("Mega-Ether", 0x9AA635 + 0x2800);
+                case 7: return ("Megalixir", 0x9AA636 + 0x2800);
+                case 8: return ("Tent", 0x9AA691 + 0x2800);
+                case 9: return ("Drive Recovery", 0x9AA714 + 0x2800);
+                case 10: return ("High Drive Recovery", 0x9AA715 + 0x2800);
+                case 11: return ("Power Boost", 0x9AA716 + 0x2800);
+                case 12: return ("Magic Boost", 0x9AA717 + 0x2800);
+                case 13: return ("Defense Boost", 0x9AA718 + 0x2800);
+                case 14: return ("AP Boost", 0x9AA719 + 0x2800);
+                default: return ("Potion", 0x9AA630 + 0x2800);
             }
-            return getconsumable.ToArray();
         }
     }
 }

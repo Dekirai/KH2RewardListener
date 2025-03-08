@@ -37,22 +37,22 @@ namespace KH2RewardListener.Rewards
             {
                 while (counter > 0)
                 {
-                    int _isPaused = mem.ReadByte($"{process}.exe+AB9054");
-                    int _cantMove = mem.ReadByte($"{process}.exe+2A148E8");
-                    int _isWorldMap = mem.ReadByte($"{process}.exe+714DB8");
-                    int _isMapLoaded = mem.ReadByte($"{process}.exe+9B80D0");
+                    int _isPaused = mem.ReadByte($"{process}.exe+ABB854");
+                    int _cantMove = mem.ReadByte($"{process}.exe+2A171E8");
+                    int _isWorldMap = mem.ReadByte($"{process}.exe+717008");
+                    int _isMapLoaded = mem.ReadByte($"{process}.exe+9BA8D0");
                     if (_isPaused > 0 || _cantMove > 0 || _isWorldMap == 15 || _isMapLoaded == 0)
                     {
                         Thread.Sleep(1000);
                         continue;
                     }
 
-                    mem.FreezeValue($"{process}.exe+0x716A58", "byte", $"{item[1]}");
+                    mem.FreezeValue($"{process}.exe+0x718CA8", "byte", $"{item[1]}");
                     Thread.Sleep(1000);
                     counter--;
                 }
-                mem.UnfreezeValue($"{process}.exe+0x716A58");
-                mem.WriteMemory($"{process}.exe+0x716A58", "byte", "0");
+                mem.UnfreezeValue($"{process}.exe+0x718CA8");
+                mem.WriteMemory($"{process}.exe+0x718CA8", "byte", "0");
                 MainForm.client.SendMessage(MainForm.channel, endmessage);
             }).Start();
         }

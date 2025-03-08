@@ -36,28 +36,28 @@ namespace KH2RewardListener.Rewards
             var item = Consumables.GetConsumable(value);
             int amount = random.Next(start, end);
 
-            MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Item]", item[0]).Replace("[Amount]", $"{amount}"));
+            MainForm.client.SendMessage(MainForm.channel, chatmessage.Replace("[Item]", item.Item1).Replace("[Amount]", $"{amount}"));
 
             new Thread(() =>
             {
                 while (counter > 0)
                 {
-                    //int _isPaused = mem.ReadByte($"{process}.exe+AB9054");
-                    //int _cantMove = mem.ReadByte($"{process}.exe+2A148E8");
-                    //int _isWorldMap = mem.ReadByte($"{process}.exe+714DB8");
-                    int _isMapLoaded = mem.ReadByte($"{process}.exe+9B80D0");
+                    //int _isPaused = mem.ReadByte($"{process}.exe+ABB854");
+                    //int _cantMove = mem.ReadByte($"{process}.exe+2A171E8");
+                    //int _isWorldMap = mem.ReadByte($"{process}.exe+717008");
+                    int _isMapLoaded = mem.ReadByte($"{process}.exe+9BA8D0");
                     if (_isMapLoaded == 0)
                     {
                         Thread.Sleep(1000);
                         continue;
                     }
-                    var currentamount = mem.ReadByte($"{process}.exe+{item[1]}");
+                    var currentamount = mem.ReadByte($"{process}.exe+{item.Item2}");
                     var count = currentamount + amount;
                     if (count > 99)
                         count = 99;
                     if (count < 0)
                         count = 0;
-                    mem.WriteMemory($"{process}.exe+{item[1]}", "byte", $"0x{count.ToString("X")}");
+                    mem.WriteMemory($"{process}.exe+{item.Item2}", "byte", $"0x{count.ToString("X")}");
                     counter--;
                 }
             }).Start();
