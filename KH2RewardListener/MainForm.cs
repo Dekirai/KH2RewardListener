@@ -7,16 +7,15 @@ using TwitchLib.PubSub;
 using TwitchLib.PubSub.Events;
 using System.Diagnostics;
 using KH2RewardListener.Logger;
-using Memory;
 using KH2RewardListener.Properties;
 using KH2RewardListener.Rewards;
+using System;
 
 namespace KH2RewardListener
 {
     public partial class MainForm : Form
     {
         public static TwitchPubSub PubSub;
-        public static Mem mem = new Mem();
         public static TwitchClient client = new TwitchClient();
         public static ITwitchAPI API;
         public static string channel = "";
@@ -115,9 +114,9 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.AutoAttack:
                         AutoAttack.DoAction();
                         break;
-                    case var value when value == RewardManager.AutoJump:
-                        AutoJump.DoAction();
-                        break;
+                    //case var value when value == RewardManager.AutoJump:
+                    //    AutoJump.DoAction();
+                    //    break;
                     case var value when value == RewardManager.BlindSight:
                         BlindSight.DoAction();
                         break;
@@ -160,9 +159,9 @@ namespace KH2RewardListener
                     case var value when value == RewardManager.InvisibleModels:
                         InvisibleModels.DoAction();
                         break;
-                    case var value when value == RewardManager.MovementSpeed:
-                        MovementSpeed.DoAction();
-                        break;
+                    //case var value when value == RewardManager.MovementSpeed:
+                    //    MovementSpeed.DoAction();
+                    //    break;
                     case var value when value == RewardManager.NoAttack:
                         NoAttack.DoAction();
                         break;
@@ -271,10 +270,16 @@ namespace KH2RewardListener
 
         private void GetPID()
         {
-            int pid = mem.GetProcIdFromName("KINGDOM HEARTS II FINAL MIX");
-            bool openProc = false;
-
-            if (pid > 0) openProc = mem.OpenProcess(pid);
+            try
+            {
+                var _myProcess = Process.GetProcessesByName("KINGDOM HEARTS II FINAL MIX")[0];
+                if (_myProcess.Id > 0)
+                    Hypervisor.AttachProcess(_myProcess);
+            }
+            catch
+            {
+                // Ignore exception
+            }
         }
         private async void ll_accesstoken_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

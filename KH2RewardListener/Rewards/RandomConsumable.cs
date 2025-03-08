@@ -1,19 +1,24 @@
 ﻿using KH2RewardListener.Memory;
-using Memory;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace KH2RewardListener.Rewards
 {
     public class RandomConsumable
     {
-        static Mem mem = new Mem();
         static string process = "KINGDOM HEARTS II FINAL MIX";
         private static void GetPID()
         {
-            int pid = mem.GetProcIdFromName(process);
-            bool openProc = false;
-
-            if (pid > 0) openProc = mem.OpenProcess(pid);
+            try
+            {
+                var _myProcess = Process.GetProcessesByName(process)[0];
+                if (_myProcess.Id > 0)
+                    Hypervisor.AttachProcess(_myProcess);
+            }
+            catch
+            {
+                // Ignore exception
+            }
         }
 
         public static void DoAction()
@@ -42,22 +47,19 @@ namespace KH2RewardListener.Rewards
             {
                 while (counter > 0)
                 {
-                    //int _isPaused = mem.ReadByte($"{process}.exe+ABB854");
-                    //int _cantMove = mem.ReadByte($"{process}.exe+2A171E8");
-                    //int _isWorldMap = mem.ReadByte($"{process}.exe+717008");
-                    int _isMapLoaded = mem.ReadByte($"{process}.exe+9BA8D0");
+                    int _isMapLoaded = Hypervisor.Read<byte>(0x9BA8D0);
                     if (_isMapLoaded == 0)
                     {
                         Thread.Sleep(1000);
                         continue;
                     }
-                    var currentamount = mem.ReadByte($"{process}.exe+{item.Item2}");
+                    var currentamount = Hypervisor.Read<byte>(item.Item2);
                     var count = currentamount + amount;
                     if (count > 99)
                         count = 99;
                     if (count < 0)
                         count = 0;
-                    mem.WriteMemory($"{process}.exe+{item.Item2}", "byte", $"0x{count.ToString("X")}");
+                    Hypervisor.Write<byte>(item.Item2, (byte)count);
                     counter--;
                 }
             }).Start();

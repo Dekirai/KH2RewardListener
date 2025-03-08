@@ -2,7 +2,7 @@
 {
     public class Consumables
     {
-        public static (string, int) GetConsumable(int consumable)
+        public static (string, ulong) GetConsumable(int consumable)
         {
             switch (consumable)
             {
