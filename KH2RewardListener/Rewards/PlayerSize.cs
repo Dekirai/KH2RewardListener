@@ -59,22 +59,19 @@ namespace KH2RewardListener.Rewards
                     }
                     if (size == "Small")
                     {
-                        Hypervisor.FreezeAddress<float>(Hypervisor.GetPointer64(0x718CB0, [0x30]), 0.5f, true);
-                        Hypervisor.FreezeAddress<float>(Hypervisor.GetPointer64(0x718CB0, [0x34]), 0.5f, true);
-                        Hypervisor.FreezeAddress<float>(Hypervisor.GetPointer64(0x718CB0, [0x38]), 0.5f, true);
+                        Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x30]), 0.5f, true);
+                        Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x34]), 0.5f, true);
+                        Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x38]), 0.5f, true);
                     }
                     else if (size == "Big")
                     {
-                        Hypervisor.FreezeAddress<float>(Hypervisor.GetPointer64(0x718CB0, [0x30]), 3f, true);
-                        Hypervisor.FreezeAddress<float>(Hypervisor.GetPointer64(0x718CB0, [0x34]), 3f, true);
-                        Hypervisor.FreezeAddress<float>(Hypervisor.GetPointer64(0x718CB0, [0x38]), 3f, true);
+                        Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x30]), 3f, true);
+                        Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x34]), 3f, true);
+                        Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x38]), 3f, true);
                     }
                     Thread.Sleep(1000);
                     counter--;
                 }
-                Hypervisor.UnfreezeAddress(Hypervisor.GetPointer64(0x718CB0, [0x30]));
-                Hypervisor.UnfreezeAddress(Hypervisor.GetPointer64(0x718CB0, [0x34]));
-                Hypervisor.UnfreezeAddress(Hypervisor.GetPointer64(0x718CB0, [0x38]));
 
                 Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x30]), 1f, true);
                 Hypervisor.Write<float>(Hypervisor.GetPointer64(0x718CB0, [0x34]), 1f, true);
